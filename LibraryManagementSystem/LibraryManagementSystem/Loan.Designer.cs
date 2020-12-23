@@ -1,7 +1,7 @@
 ﻿
 namespace LibraryManagementSystem
 {
-    partial class Borrower
+    partial class Loan
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,9 @@ namespace LibraryManagementSystem
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Loan = new System.Windows.Forms.Button();
             this.btn_Library = new System.Windows.Forms.Button();
@@ -39,29 +42,53 @@ namespace LibraryManagementSystem
             this.btn_Dashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.txt_ReturnedDate = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_LendingDate = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Update = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txt_CopyID = new System.Windows.Forms.TextBox();
             this.txt_BorrowerID = new System.Windows.Forms.TextBox();
-            this.txt_Name = new System.Windows.Forms.TextBox();
-            this.txt_Search = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btn_Search = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txt_ContactNo = new System.Windows.Forms.TextBox();
+            this.txt_LoanID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_Address = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_Email = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel3.Controls.Add(this.btn_Search);
+            this.panel3.Controls.Add(this.textBox4);
+            this.panel3.Location = new System.Drawing.Point(780, 158);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(377, 67);
+            this.panel3.TabIndex = 30;
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search.Location = new System.Drawing.Point(282, 19);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(75, 23);
+            this.btn_Search.TabIndex = 25;
+            this.btn_Search.Text = "Search";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(29, 21);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(221, 20);
+            this.textBox4.TabIndex = 24;
             // 
             // panel1
             // 
@@ -77,14 +104,14 @@ namespace LibraryManagementSystem
             this.panel1.Location = new System.Drawing.Point(1, 54);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(220, 728);
-            this.panel1.TabIndex = 5;
+            this.panel1.TabIndex = 29;
             // 
             // btn_Loan
             // 
             this.btn_Loan.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Loan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Loan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Loan.Location = new System.Drawing.Point(12, 539);
+            this.btn_Loan.Location = new System.Drawing.Point(12, 543);
             this.btn_Loan.Name = "btn_Loan";
             this.btn_Loan.Size = new System.Drawing.Size(197, 39);
             this.btn_Loan.TabIndex = 19;
@@ -96,7 +123,7 @@ namespace LibraryManagementSystem
             this.btn_Library.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Library.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Library.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Library.Location = new System.Drawing.Point(12, 114);
+            this.btn_Library.Location = new System.Drawing.Point(12, 109);
             this.btn_Library.Name = "btn_Library";
             this.btn_Library.Size = new System.Drawing.Size(197, 39);
             this.btn_Library.TabIndex = 18;
@@ -108,7 +135,7 @@ namespace LibraryManagementSystem
             this.btn_Copy.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Copy.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Copy.Location = new System.Drawing.Point(11, 454);
+            this.btn_Copy.Location = new System.Drawing.Point(11, 455);
             this.btn_Copy.Name = "btn_Copy";
             this.btn_Copy.Size = new System.Drawing.Size(197, 39);
             this.btn_Copy.TabIndex = 15;
@@ -120,7 +147,7 @@ namespace LibraryManagementSystem
             this.btn_Borrower.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Borrower.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Borrower.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Borrower.Location = new System.Drawing.Point(11, 367);
+            this.btn_Borrower.Location = new System.Drawing.Point(11, 368);
             this.btn_Borrower.Name = "btn_Borrower";
             this.btn_Borrower.Size = new System.Drawing.Size(197, 39);
             this.btn_Borrower.TabIndex = 14;
@@ -132,7 +159,7 @@ namespace LibraryManagementSystem
             this.btn_Author.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Author.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Author.Location = new System.Drawing.Point(11, 280);
+            this.btn_Author.Location = new System.Drawing.Point(11, 281);
             this.btn_Author.Name = "btn_Author";
             this.btn_Author.Size = new System.Drawing.Size(197, 39);
             this.btn_Author.TabIndex = 13;
@@ -144,7 +171,7 @@ namespace LibraryManagementSystem
             this.btn_Book.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Book.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Book.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Book.Location = new System.Drawing.Point(11, 191);
+            this.btn_Book.Location = new System.Drawing.Point(11, 192);
             this.btn_Book.Name = "btn_Book";
             this.btn_Book.Size = new System.Drawing.Size(197, 39);
             this.btn_Book.TabIndex = 12;
@@ -156,7 +183,7 @@ namespace LibraryManagementSystem
             this.btn_Dashboard.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Dashboard.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Dashboard.Location = new System.Drawing.Point(11, 38);
+            this.btn_Dashboard.Location = new System.Drawing.Point(12, 36);
             this.btn_Dashboard.Name = "btn_Dashboard";
             this.btn_Dashboard.Size = new System.Drawing.Size(197, 39);
             this.btn_Dashboard.TabIndex = 11;
@@ -170,7 +197,7 @@ namespace LibraryManagementSystem
             this.panel2.Location = new System.Drawing.Point(1, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1183, 55);
-            this.panel2.TabIndex = 4;
+            this.panel2.TabIndex = 28;
             // 
             // label3
             // 
@@ -182,196 +209,173 @@ namespace LibraryManagementSystem
             this.label3.TabIndex = 0;
             this.label3.Text = "LIBRARY MANAGEMENT SYSTEM";
             // 
-            // btn_Clear
+            // txt_ReturnedDate
             // 
-            this.btn_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Clear.Location = new System.Drawing.Point(727, 429);
-            this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(75, 23);
-            this.btn_Clear.TabIndex = 17;
-            this.btn_Clear.Text = "CLEAR";
-            this.btn_Clear.UseVisualStyleBackColor = true;
-            // 
-            // btn_Delete
-            // 
-            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Delete.Location = new System.Drawing.Point(618, 429);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_Delete.TabIndex = 16;
-            this.btn_Delete.Text = "DELETE";
-            this.btn_Delete.UseVisualStyleBackColor = true;
-            // 
-            // btn_Update
-            // 
-            this.btn_Update.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Update.Location = new System.Drawing.Point(503, 429);
-            this.btn_Update.Name = "btn_Update";
-            this.btn_Update.Size = new System.Drawing.Size(75, 23);
-            this.btn_Update.TabIndex = 15;
-            this.btn_Update.Text = "UPDATE";
-            this.btn_Update.UseVisualStyleBackColor = true;
-            // 
-            // btn_Add
-            // 
-            this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Add.Location = new System.Drawing.Point(385, 429);
-            this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(75, 23);
-            this.btn_Add.TabIndex = 14;
-            this.btn_Add.Text = "ADD";
-            this.btn_Add.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(337, 229);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 16);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Name";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(337, 182);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 16);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Borrower ID";
-            // 
-            // txt_BorrowerID
-            // 
-            this.txt_BorrowerID.Location = new System.Drawing.Point(486, 178);
-            this.txt_BorrowerID.Name = "txt_BorrowerID";
-            this.txt_BorrowerID.Size = new System.Drawing.Size(193, 20);
-            this.txt_BorrowerID.TabIndex = 22;
-            // 
-            // txt_Name
-            // 
-            this.txt_Name.Location = new System.Drawing.Point(486, 229);
-            this.txt_Name.Name = "txt_Name";
-            this.txt_Name.Size = new System.Drawing.Size(193, 20);
-            this.txt_Name.TabIndex = 23;
-            // 
-            // txt_Search
-            // 
-            this.txt_Search.Location = new System.Drawing.Point(29, 21);
-            this.txt_Search.Name = "txt_Search";
-            this.txt_Search.Size = new System.Drawing.Size(221, 20);
-            this.txt_Search.TabIndex = 24;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel3.Controls.Add(this.btn_Search);
-            this.panel3.Controls.Add(this.txt_Search);
-            this.panel3.Location = new System.Drawing.Point(776, 178);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(377, 67);
-            this.panel3.TabIndex = 25;
-            // 
-            // btn_Search
-            // 
-            this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.Location = new System.Drawing.Point(282, 19);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(75, 23);
-            this.btn_Search.TabIndex = 25;
-            this.btn_Search.Text = "Search";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(340, 543);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(762, 176);
-            this.dataGridView1.TabIndex = 28;
-            // 
-            // txt_ContactNo
-            // 
-            this.txt_ContactNo.Location = new System.Drawing.Point(486, 277);
-            this.txt_ContactNo.Name = "txt_ContactNo";
-            this.txt_ContactNo.Size = new System.Drawing.Size(193, 20);
-            this.txt_ContactNo.TabIndex = 30;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(337, 277);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 16);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "Contact No";
-            // 
-            // txt_Address
-            // 
-            this.txt_Address.Location = new System.Drawing.Point(486, 331);
-            this.txt_Address.Name = "txt_Address";
-            this.txt_Address.Size = new System.Drawing.Size(193, 20);
-            this.txt_Address.TabIndex = 32;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(337, 331);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 16);
-            this.label5.TabIndex = 31;
-            this.label5.Text = "Address";
-            // 
-            // txt_Email
-            // 
-            this.txt_Email.Location = new System.Drawing.Point(486, 376);
-            this.txt_Email.Name = "txt_Email";
-            this.txt_Email.Size = new System.Drawing.Size(193, 20);
-            this.txt_Email.TabIndex = 34;
+            this.txt_ReturnedDate.Location = new System.Drawing.Point(537, 354);
+            this.txt_ReturnedDate.Name = "txt_ReturnedDate";
+            this.txt_ReturnedDate.Size = new System.Drawing.Size(193, 20);
+            this.txt_ReturnedDate.TabIndex = 51;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(337, 376);
+            this.label6.Location = new System.Drawing.Point(363, 355);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 16);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Email";
+            this.label6.Size = new System.Drawing.Size(108, 16);
+            this.label6.TabIndex = 50;
+            this.label6.Text = "Returned Date";
             // 
-            // Borrower
+            // txt_LendingDate
+            // 
+            this.txt_LendingDate.Location = new System.Drawing.Point(537, 308);
+            this.txt_LendingDate.Name = "txt_LendingDate";
+            this.txt_LendingDate.Size = new System.Drawing.Size(193, 20);
+            this.txt_LendingDate.TabIndex = 49;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(363, 309);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 16);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "Lending Date";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(330, 539);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(762, 176);
+            this.dataGridView1.TabIndex = 47;
+            // 
+            // btn_Clear
+            // 
+            this.btn_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Clear.Location = new System.Drawing.Point(728, 422);
+            this.btn_Clear.Name = "btn_Clear";
+            this.btn_Clear.Size = new System.Drawing.Size(75, 23);
+            this.btn_Clear.TabIndex = 46;
+            this.btn_Clear.Text = "CLEAR";
+            this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Delete.Location = new System.Drawing.Point(619, 422);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_Delete.TabIndex = 45;
+            this.btn_Delete.Text = "DELETE";
+            this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+            // 
+            // btn_Update
+            // 
+            this.btn_Update.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Update.Location = new System.Drawing.Point(504, 422);
+            this.btn_Update.Name = "btn_Update";
+            this.btn_Update.Size = new System.Drawing.Size(75, 23);
+            this.btn_Update.TabIndex = 44;
+            this.btn_Update.Text = "UPDATE";
+            this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
+            // 
+            // btn_Add
+            // 
+            this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Add.Location = new System.Drawing.Point(386, 422);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(75, 23);
+            this.btn_Add.TabIndex = 43;
+            this.btn_Add.Text = "ADD";
+            this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
+            // 
+            // txt_CopyID
+            // 
+            this.txt_CopyID.Location = new System.Drawing.Point(537, 210);
+            this.txt_CopyID.Name = "txt_CopyID";
+            this.txt_CopyID.Size = new System.Drawing.Size(193, 20);
+            this.txt_CopyID.TabIndex = 42;
+            // 
+            // txt_BorrowerID
+            // 
+            this.txt_BorrowerID.Location = new System.Drawing.Point(537, 257);
+            this.txt_BorrowerID.Name = "txt_BorrowerID";
+            this.txt_BorrowerID.Size = new System.Drawing.Size(193, 20);
+            this.txt_BorrowerID.TabIndex = 41;
+            // 
+            // txt_LoanID
+            // 
+            this.txt_LoanID.Location = new System.Drawing.Point(537, 159);
+            this.txt_LoanID.Name = "txt_LoanID";
+            this.txt_LoanID.Size = new System.Drawing.Size(193, 20);
+            this.txt_LoanID.TabIndex = 40;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(363, 210);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 16);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Copy ID";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(363, 258);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 16);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "Borrower ID";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(363, 163);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 16);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Loan ID";
+            // 
+            // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 781);
-            this.Controls.Add(this.txt_Email);
+            this.Controls.Add(this.txt_ReturnedDate);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txt_Address);
+            this.Controls.Add(this.txt_LendingDate);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txt_ContactNo);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.txt_Name);
-            this.Controls.Add(this.txt_BorrowerID);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_Clear);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Update);
             this.Controls.Add(this.btn_Add);
+            this.Controls.Add(this.txt_CopyID);
+            this.Controls.Add(this.txt_BorrowerID);
+            this.Controls.Add(this.txt_LoanID);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "Borrower";
-            this.Text = "Borrower";
+            this.Name = "Loan";
+            this.Text = "Loan";
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -380,32 +384,32 @@ namespace LibraryManagementSystem
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btn_Clear;
-        private System.Windows.Forms.Button btn_Delete;
-        private System.Windows.Forms.Button btn_Update;
-        private System.Windows.Forms.Button btn_Add;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_BorrowerID;
-        private System.Windows.Forms.TextBox txt_Name;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_Search;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_Copy;
         private System.Windows.Forms.Button btn_Borrower;
         private System.Windows.Forms.Button btn_Author;
         private System.Windows.Forms.Button btn_Book;
         private System.Windows.Forms.Button btn_Dashboard;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox txt_ContactNo;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_Address;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txt_Email;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txt_ReturnedDate;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_LendingDate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btn_Clear;
+        private System.Windows.Forms.Button btn_Delete;
+        private System.Windows.Forms.Button btn_Update;
+        private System.Windows.Forms.Button btn_Add;
+        private System.Windows.Forms.TextBox txt_CopyID;
+        private System.Windows.Forms.TextBox txt_BorrowerID;
+        private System.Windows.Forms.TextBox txt_LoanID;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_Loan;
         private System.Windows.Forms.Button btn_Library;
     }
