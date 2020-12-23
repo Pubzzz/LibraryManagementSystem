@@ -38,8 +38,11 @@ namespace LibraryManagementSystem
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_Logout = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+<<<<<<< Updated upstream
             this.btn_Loan = new System.Windows.Forms.Button();
             this.btn_Library = new System.Windows.Forms.Button();
+=======
+>>>>>>> Stashed changes
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -55,9 +58,10 @@ namespace LibraryManagementSystem
             this.panel1.Controls.Add(this.btn_Book);
             this.panel1.Controls.Add(this.btn_Dashboard);
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Location = new System.Drawing.Point(1, 53);
+            this.panel1.Location = new System.Drawing.Point(1, 65);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(220, 728);
+            this.panel1.Size = new System.Drawing.Size(293, 896);
             this.panel1.TabIndex = 0;
             // 
             // btn_Copy
@@ -65,9 +69,16 @@ namespace LibraryManagementSystem
             this.btn_Copy.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Copy.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+<<<<<<< Updated upstream
             this.btn_Copy.Location = new System.Drawing.Point(11, 423);
             this.btn_Copy.Name = "btn_Copy";
             this.btn_Copy.Size = new System.Drawing.Size(197, 39);
+=======
+            this.btn_Copy.Location = new System.Drawing.Point(15, 521);
+            this.btn_Copy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Copy.Name = "btn_Copy";
+            this.btn_Copy.Size = new System.Drawing.Size(263, 48);
+>>>>>>> Stashed changes
             this.btn_Copy.TabIndex = 10;
             this.btn_Copy.Text = "COPY";
             this.btn_Copy.UseVisualStyleBackColor = false;
@@ -77,9 +88,10 @@ namespace LibraryManagementSystem
             this.btn_Borrower.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Borrower.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Borrower.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Borrower.Location = new System.Drawing.Point(11, 336);
+            this.btn_Borrower.Location = new System.Drawing.Point(15, 414);
+            this.btn_Borrower.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Borrower.Name = "btn_Borrower";
-            this.btn_Borrower.Size = new System.Drawing.Size(197, 39);
+            this.btn_Borrower.Size = new System.Drawing.Size(263, 48);
             this.btn_Borrower.TabIndex = 9;
             this.btn_Borrower.Text = "BORROWER";
             this.btn_Borrower.UseVisualStyleBackColor = false;
@@ -89,36 +101,57 @@ namespace LibraryManagementSystem
             this.btn_Author.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Author.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Author.Location = new System.Drawing.Point(11, 249);
+            this.btn_Author.Location = new System.Drawing.Point(15, 306);
+            this.btn_Author.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Author.Name = "btn_Author";
-            this.btn_Author.Size = new System.Drawing.Size(197, 39);
+            this.btn_Author.Size = new System.Drawing.Size(263, 48);
             this.btn_Author.TabIndex = 8;
             this.btn_Author.Text = "AUTHOR";
             this.btn_Author.UseVisualStyleBackColor = false;
+            this.btn_Author.Click += new System.EventHandler(this.btn_Author_Click);
             // 
             // btn_Book
             // 
             this.btn_Book.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Book.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Book.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_Book.Location = new System.Drawing.Point(11, 160);
+            this.btn_Book.Location = new System.Drawing.Point(15, 197);
+            this.btn_Book.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Book.Name = "btn_Book";
-            this.btn_Book.Size = new System.Drawing.Size(197, 39);
+            this.btn_Book.Size = new System.Drawing.Size(263, 48);
             this.btn_Book.TabIndex = 7;
             this.btn_Book.Text = "BOOK";
             this.btn_Book.UseVisualStyleBackColor = false;
+            this.btn_Book.Click += new System.EventHandler(this.btn_Book_Click);
             // 
             // btn_Dashboard
             // 
             this.btn_Dashboard.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Dashboard.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+<<<<<<< Updated upstream
             this.btn_Dashboard.Location = new System.Drawing.Point(11, 19);
+=======
+            this.btn_Dashboard.Location = new System.Drawing.Point(15, 91);
+            this.btn_Dashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.btn_Dashboard.Name = "btn_Dashboard";
-            this.btn_Dashboard.Size = new System.Drawing.Size(197, 39);
+            this.btn_Dashboard.Size = new System.Drawing.Size(263, 48);
             this.btn_Dashboard.TabIndex = 6;
             this.btn_Dashboard.Text = "DASHBOARD";
             this.btn_Dashboard.UseVisualStyleBackColor = false;
+            this.btn_Dashboard.Click += new System.EventHandler(this.btn_Dashboard_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.btn_Logout);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Location = new System.Drawing.Point(1, 1);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1577, 68);
+            this.panel2.TabIndex = 1;
             // 
             // panel2
             // 
@@ -134,9 +167,10 @@ namespace LibraryManagementSystem
             // 
             this.btn_Logout.BackColor = System.Drawing.Color.SlateGray;
             this.btn_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Logout.Location = new System.Drawing.Point(1029, 11);
+            this.btn_Logout.Location = new System.Drawing.Point(1372, 14);
+            this.btn_Logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Logout.Name = "btn_Logout";
-            this.btn_Logout.Size = new System.Drawing.Size(95, 35);
+            this.btn_Logout.Size = new System.Drawing.Size(127, 43);
             this.btn_Logout.TabIndex = 2;
             this.btn_Logout.Text = "LOGOUT";
             this.btn_Logout.UseVisualStyleBackColor = false;
@@ -145,6 +179,7 @@ namespace LibraryManagementSystem
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< Updated upstream
             this.label3.Location = new System.Drawing.Point(445, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(293, 20);
@@ -174,14 +209,23 @@ namespace LibraryManagementSystem
             this.btn_Library.TabIndex = 18;
             this.btn_Library.Text = "LIBRARY";
             this.btn_Library.UseVisualStyleBackColor = false;
+=======
+            this.label3.Location = new System.Drawing.Point(593, 21);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(357, 25);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "LIBRARY MANAGEMENT SYSTEM";
+>>>>>>> Stashed changes
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 781);
+            this.ClientSize = new System.Drawing.Size(1579, 961);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Home";
             this.Text = "Home";
             this.panel1.ResumeLayout(false);

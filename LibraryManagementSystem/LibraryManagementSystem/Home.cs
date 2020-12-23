@@ -16,5 +16,22 @@ namespace LibraryManagementSystem
         {
             InitializeComponent();
         }
+
+        private void btn_Dashboard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Book_Click(object sender, EventArgs e)
+        {
+            Book one = new Book();
+            this.Hide();
+            one.Show();
+        }
+
+        private void btn_Author_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
