@@ -1,0 +1,15 @@
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.exe.config
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.exe
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.pdb
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.csprojAssemblyReference.cache
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Form1.resources
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Home.resources
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Properties.Resources.resources
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.csproj.GenerateResource.cache
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.csproj.CoreCompileInputs.cache
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.exe
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.pdb
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Author.resources
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Book.resources
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Borrower.resources
+G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Copy.resources
