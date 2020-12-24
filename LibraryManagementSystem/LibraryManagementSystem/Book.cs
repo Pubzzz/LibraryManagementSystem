@@ -16,5 +16,10 @@ namespace LibraryManagementSystem
         {
             InitializeComponent();
         }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
