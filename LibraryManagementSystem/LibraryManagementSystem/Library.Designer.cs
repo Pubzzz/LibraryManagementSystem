@@ -29,7 +29,10 @@ namespace LibraryManagementSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
             this.txt_Search = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -46,7 +49,7 @@ namespace LibraryManagementSystem
             this.label6 = new System.Windows.Forms.Label();
             this.txt_Admin = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.LibraryGridView = new System.Windows.Forms.DataGridView();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Update = new System.Windows.Forms.Button();
@@ -64,13 +67,14 @@ namespace LibraryManagementSystem
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LibraryGridView)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.btn_Search);
             this.panel3.Controls.Add(this.txt_Search);
             this.panel3.Location = new System.Drawing.Point(483, 586);
@@ -79,20 +83,32 @@ namespace LibraryManagementSystem
             this.panel3.Size = new System.Drawing.Size(1267, 82);
             this.panel3.TabIndex = 30;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1036, 20);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 40);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "RESET";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // btn_Search
             // 
             this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.Location = new System.Drawing.Point(593, 22);
+            this.btn_Search.Location = new System.Drawing.Point(846, 20);
             this.btn_Search.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(100, 28);
+            this.btn_Search.Size = new System.Drawing.Size(150, 40);
             this.btn_Search.TabIndex = 25;
-            this.btn_Search.Text = "Search";
+            this.btn_Search.Text = "SEARCH";
             this.btn_Search.UseVisualStyleBackColor = true;
             // 
             // txt_Search
             // 
-            this.txt_Search.Location = new System.Drawing.Point(39, 26);
+            this.txt_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Search.Location = new System.Drawing.Point(224, 25);
             this.txt_Search.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Search.Multiline = true;
             this.txt_Search.Name = "txt_Search";
@@ -237,6 +253,7 @@ namespace LibraryManagementSystem
             // 
             // txt_ContactNo
             // 
+            this.txt_ContactNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ContactNo.Location = new System.Drawing.Point(707, 406);
             this.txt_ContactNo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_ContactNo.Multiline = true;
@@ -257,6 +274,7 @@ namespace LibraryManagementSystem
             // 
             // txt_Admin
             // 
+            this.txt_Admin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Admin.Location = new System.Drawing.Point(707, 351);
             this.txt_Admin.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Admin.Multiline = true;
@@ -275,15 +293,34 @@ namespace LibraryManagementSystem
             this.label5.TabIndex = 48;
             this.label5.Text = "Administrator";
             // 
-            // dataGridView1
+            // LibraryGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(483, 676);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1267, 306);
-            this.dataGridView1.TabIndex = 47;
+            this.LibraryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.LibraryGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LibraryGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.LibraryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LibraryGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.LibraryGridView.GridColor = System.Drawing.SystemColors.HotTrack;
+            this.LibraryGridView.Location = new System.Drawing.Point(483, 676);
+            this.LibraryGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.LibraryGridView.Name = "LibraryGridView";
+            this.LibraryGridView.RowHeadersWidth = 51;
+            this.LibraryGridView.Size = new System.Drawing.Size(1267, 306);
+            this.LibraryGridView.TabIndex = 47;
             // 
             // btn_Clear
             // 
@@ -291,7 +328,7 @@ namespace LibraryManagementSystem
             this.btn_Clear.Location = new System.Drawing.Point(1165, 524);
             this.btn_Clear.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(100, 28);
+            this.btn_Clear.Size = new System.Drawing.Size(115, 38);
             this.btn_Clear.TabIndex = 46;
             this.btn_Clear.Text = "CLEAR";
             this.btn_Clear.UseVisualStyleBackColor = true;
@@ -302,7 +339,7 @@ namespace LibraryManagementSystem
             this.btn_Delete.Location = new System.Drawing.Point(1011, 524);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(100, 28);
+            this.btn_Delete.Size = new System.Drawing.Size(115, 38);
             this.btn_Delete.TabIndex = 45;
             this.btn_Delete.Text = "DELETE";
             this.btn_Delete.UseVisualStyleBackColor = true;
@@ -313,7 +350,7 @@ namespace LibraryManagementSystem
             this.btn_Update.Location = new System.Drawing.Point(858, 524);
             this.btn_Update.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Update.Name = "btn_Update";
-            this.btn_Update.Size = new System.Drawing.Size(100, 28);
+            this.btn_Update.Size = new System.Drawing.Size(115, 38);
             this.btn_Update.TabIndex = 44;
             this.btn_Update.Text = "UPDATE";
             this.btn_Update.UseVisualStyleBackColor = true;
@@ -324,13 +361,14 @@ namespace LibraryManagementSystem
             this.btn_Add.Location = new System.Drawing.Point(705, 524);
             this.btn_Add.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(100, 28);
+            this.btn_Add.Size = new System.Drawing.Size(115, 38);
             this.btn_Add.TabIndex = 43;
             this.btn_Add.Text = "ADD";
             this.btn_Add.UseVisualStyleBackColor = true;
             // 
             // txt_LibraryName
             // 
+            this.txt_LibraryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_LibraryName.Location = new System.Drawing.Point(707, 244);
             this.txt_LibraryName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_LibraryName.Multiline = true;
@@ -340,6 +378,7 @@ namespace LibraryManagementSystem
             // 
             // txt_Type
             // 
+            this.txt_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Type.Location = new System.Drawing.Point(707, 293);
             this.txt_Type.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Type.Multiline = true;
@@ -349,6 +388,7 @@ namespace LibraryManagementSystem
             // 
             // txt_LibraryID
             // 
+            this.txt_LibraryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_LibraryID.Location = new System.Drawing.Point(707, 192);
             this.txt_LibraryID.Margin = new System.Windows.Forms.Padding(4);
             this.txt_LibraryID.Multiline = true;
@@ -391,6 +431,7 @@ namespace LibraryManagementSystem
             // 
             // txt_Address
             // 
+            this.txt_Address.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Address.Location = new System.Drawing.Point(707, 460);
             this.txt_Address.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Address.Multiline = true;
@@ -442,7 +483,7 @@ namespace LibraryManagementSystem
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_Admin);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.LibraryGridView);
             this.Controls.Add(this.btn_Clear);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Update);
@@ -467,7 +508,7 @@ namespace LibraryManagementSystem
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LibraryGridView)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -492,7 +533,7 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_Admin;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView LibraryGridView;
         private System.Windows.Forms.Button btn_Clear;
         private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Button btn_Update;
@@ -509,5 +550,6 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Button btn_Library;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button1;
     }
 }

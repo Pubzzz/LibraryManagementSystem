@@ -29,6 +29,8 @@ namespace LibraryManagementSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Search = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -46,7 +48,7 @@ namespace LibraryManagementSystem
             this.label6 = new System.Windows.Forms.Label();
             this.txt_LendingDate = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.LoanGridView = new System.Windows.Forms.DataGridView();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Update = new System.Windows.Forms.Button();
@@ -59,16 +61,18 @@ namespace LibraryManagementSystem
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoanGridView)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.btn_Search);
             this.panel3.Controls.Add(this.textBox4);
             this.panel3.Location = new System.Drawing.Point(484, 558);
@@ -80,17 +84,18 @@ namespace LibraryManagementSystem
             // btn_Search
             // 
             this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.Location = new System.Drawing.Point(593, 22);
+            this.btn_Search.Location = new System.Drawing.Point(846, 13);
             this.btn_Search.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(100, 28);
+            this.btn_Search.Size = new System.Drawing.Size(142, 49);
             this.btn_Search.TabIndex = 25;
-            this.btn_Search.Text = "Search";
+            this.btn_Search.Text = "SEARCH";
             this.btn_Search.UseVisualStyleBackColor = true;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(39, 26);
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(223, 26);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -235,6 +240,7 @@ namespace LibraryManagementSystem
             // 
             // txt_ReturnedDate
             // 
+            this.txt_ReturnedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ReturnedDate.Location = new System.Drawing.Point(707, 404);
             this.txt_ReturnedDate.Margin = new System.Windows.Forms.Padding(4);
             this.txt_ReturnedDate.Multiline = true;
@@ -255,6 +261,7 @@ namespace LibraryManagementSystem
             // 
             // txt_LendingDate
             // 
+            this.txt_LendingDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_LendingDate.Location = new System.Drawing.Point(707, 352);
             this.txt_LendingDate.Margin = new System.Windows.Forms.Padding(4);
             this.txt_LendingDate.Multiline = true;
@@ -266,22 +273,41 @@ namespace LibraryManagementSystem
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(480, 352);
+            this.label5.Location = new System.Drawing.Point(479, 355);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 20);
             this.label5.TabIndex = 48;
             this.label5.Text = "Lending Date";
             // 
-            // dataGridView1
+            // LoanGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(484, 648);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1267, 330);
-            this.dataGridView1.TabIndex = 47;
+            this.LoanGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.LoanGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LoanGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.LoanGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LoanGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.LoanGridView.GridColor = System.Drawing.SystemColors.HotTrack;
+            this.LoanGridView.Location = new System.Drawing.Point(484, 648);
+            this.LoanGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.LoanGridView.Name = "LoanGridView";
+            this.LoanGridView.RowHeadersWidth = 51;
+            this.LoanGridView.Size = new System.Drawing.Size(1267, 330);
+            this.LoanGridView.TabIndex = 47;
             // 
             // btn_Clear
             // 
@@ -289,7 +315,7 @@ namespace LibraryManagementSystem
             this.btn_Clear.Location = new System.Drawing.Point(1167, 492);
             this.btn_Clear.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(100, 28);
+            this.btn_Clear.Size = new System.Drawing.Size(127, 38);
             this.btn_Clear.TabIndex = 46;
             this.btn_Clear.Text = "CLEAR";
             this.btn_Clear.UseVisualStyleBackColor = true;
@@ -301,7 +327,7 @@ namespace LibraryManagementSystem
             this.btn_Delete.Location = new System.Drawing.Point(1013, 492);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(100, 28);
+            this.btn_Delete.Size = new System.Drawing.Size(127, 38);
             this.btn_Delete.TabIndex = 45;
             this.btn_Delete.Text = "DELETE";
             this.btn_Delete.UseVisualStyleBackColor = true;
@@ -313,7 +339,7 @@ namespace LibraryManagementSystem
             this.btn_Update.Location = new System.Drawing.Point(860, 492);
             this.btn_Update.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Update.Name = "btn_Update";
-            this.btn_Update.Size = new System.Drawing.Size(100, 28);
+            this.btn_Update.Size = new System.Drawing.Size(127, 38);
             this.btn_Update.TabIndex = 44;
             this.btn_Update.Text = "UPDATE";
             this.btn_Update.UseVisualStyleBackColor = true;
@@ -325,7 +351,7 @@ namespace LibraryManagementSystem
             this.btn_Add.Location = new System.Drawing.Point(707, 492);
             this.btn_Add.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(100, 28);
+            this.btn_Add.Size = new System.Drawing.Size(127, 38);
             this.btn_Add.TabIndex = 43;
             this.btn_Add.Text = "ADD";
             this.btn_Add.UseVisualStyleBackColor = true;
@@ -333,6 +359,7 @@ namespace LibraryManagementSystem
             // 
             // txt_CopyID
             // 
+            this.txt_CopyID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_CopyID.Location = new System.Drawing.Point(707, 254);
             this.txt_CopyID.Margin = new System.Windows.Forms.Padding(4);
             this.txt_CopyID.Multiline = true;
@@ -342,6 +369,7 @@ namespace LibraryManagementSystem
             // 
             // txt_BorrowerID
             // 
+            this.txt_BorrowerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_BorrowerID.Location = new System.Drawing.Point(707, 302);
             this.txt_BorrowerID.Margin = new System.Windows.Forms.Padding(4);
             this.txt_BorrowerID.Multiline = true;
@@ -351,6 +379,7 @@ namespace LibraryManagementSystem
             // 
             // txt_LoanID
             // 
+            this.txt_LoanID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_LoanID.Location = new System.Drawing.Point(705, 197);
             this.txt_LoanID.Margin = new System.Windows.Forms.Padding(4);
             this.txt_LoanID.Multiline = true;
@@ -405,12 +434,23 @@ namespace LibraryManagementSystem
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(731, 17);
+            this.label7.Location = new System.Drawing.Point(526, 17);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 25);
             this.label7.TabIndex = 0;
             this.label7.Text = "LOANS";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1029, 13);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(142, 49);
+            this.button1.TabIndex = 53;
+            this.button1.Text = "RESET";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Loan
             // 
@@ -422,7 +462,7 @@ namespace LibraryManagementSystem
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_LendingDate);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.LoanGridView);
             this.Controls.Add(this.btn_Clear);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Update);
@@ -447,7 +487,7 @@ namespace LibraryManagementSystem
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoanGridView)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -472,7 +512,7 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_LendingDate;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView LoanGridView;
         private System.Windows.Forms.Button btn_Clear;
         private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Button btn_Update;
@@ -487,5 +527,6 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Button btn_Library;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
     }
 }

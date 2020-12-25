@@ -362,7 +362,7 @@ namespace LibraryManagementSystem
             // 
             this.btn_ViewLoans.AutoSize = true;
             this.btn_ViewLoans.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ViewLoans.Location = new System.Drawing.Point(69, 22);
+            this.btn_ViewLoans.Location = new System.Drawing.Point(72, 32);
             this.btn_ViewLoans.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btn_ViewLoans.Name = "btn_ViewLoans";
             this.btn_ViewLoans.Size = new System.Drawing.Size(120, 25);
