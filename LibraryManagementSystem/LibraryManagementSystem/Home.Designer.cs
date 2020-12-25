@@ -458,6 +458,7 @@ namespace LibraryManagementSystem
             this.MinimumSize = new System.Drawing.Size(1842, 1028);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dashboard";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

@@ -483,7 +483,7 @@ namespace LibraryManagementSystem
             this.MinimumSize = new System.Drawing.Size(1842, 1028);
             this.Name = "Loan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Loan";
+            this.Text = "Lending Details";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);

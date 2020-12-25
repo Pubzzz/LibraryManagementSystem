@@ -485,7 +485,7 @@ namespace LibraryManagementSystem
             this.MinimumSize = new System.Drawing.Size(1842, 1028);
             this.Name = "Borrower";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Borrower";
+            this.Text = "Registered Member Details";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

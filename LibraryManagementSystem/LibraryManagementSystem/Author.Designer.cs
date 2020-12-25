@@ -461,7 +461,7 @@ namespace LibraryManagementSystem
             this.MinimumSize = new System.Drawing.Size(1842, 1028);
             this.Name = "Author";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Author";
+            this.Text = "Author Details";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);

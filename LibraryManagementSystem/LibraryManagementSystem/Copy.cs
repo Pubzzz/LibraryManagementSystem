@@ -140,7 +140,7 @@ namespace LibraryManagementSystem
                     }
                     else
                     {
-                        string qury = "INSERT INTO Copy VALUES ('" + txt_CopyID.Text + "','" + txt_Availability.Text + "','" + txt_PurchasePrice.Text + "','" + txt_SellingPrice.Text + "','" + txt_ISBN.Text + "')";
+                        string qury = "INSERT INTO Copy VALUES ('" + txt_CopyID.Text + "','" + txt_availability.Text + "','" + txt_PurchasePrice.Text + "','" + txt_SellingPrice.Text + "','" + txt_ISBN.Text + "')";
                         SqlCommand commd = new SqlCommand(qury, con);
 
                         try
@@ -212,7 +212,7 @@ namespace LibraryManagementSystem
         private void btn_Clear_Click(object sender, EventArgs e)
         {
             txt_CopyID.Text = "";
-            txt_Availability.Text = "";
+            txt_availability.Text = "";
             txt_PurchasePrice.Text = "";
             txt_SellingPrice.Text = "";
             txt_ISBN.Text = "";
@@ -253,9 +253,9 @@ namespace LibraryManagementSystem
                     }
                 }
 
-                if (txt_Availability.Text != null && txt_Availability.Text != String.Empty)
+                if (txt_availability.Text != null && txt_availability.Text != String.Empty)
                 {
-                    Avail = txt_Availability.Text;
+                    Avail = txt_availability.Text;
                 }
 
                 if (txt_PurchasePrice.Text != null && txt_PurchasePrice.Text != String.Empty)

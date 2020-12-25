@@ -47,7 +47,6 @@ namespace LibraryManagementSystem
             this.label4 = new System.Windows.Forms.Label();
             this.txt_CopyID = new System.Windows.Forms.TextBox();
             this.txt_PurchasePrice = new System.Windows.Forms.TextBox();
-            this.txt_Availability = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
@@ -63,6 +62,7 @@ namespace LibraryManagementSystem
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.txt_availability = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -259,16 +259,6 @@ namespace LibraryManagementSystem
             this.txt_PurchasePrice.Size = new System.Drawing.Size(465, 25);
             this.txt_PurchasePrice.TabIndex = 25;
             // 
-            // txt_Availability
-            // 
-            this.txt_Availability.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Availability.Location = new System.Drawing.Point(707, 257);
-            this.txt_Availability.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_Availability.Multiline = true;
-            this.txt_Availability.Name = "txt_Availability";
-            this.txt_Availability.Size = new System.Drawing.Size(465, 25);
-            this.txt_Availability.TabIndex = 26;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.SteelBlue;
@@ -455,11 +445,20 @@ namespace LibraryManagementSystem
             this.label7.TabIndex = 0;
             this.label7.Text = "COPIES";
             // 
+            // txt_availability
+            // 
+            this.txt_availability.Location = new System.Drawing.Point(707, 254);
+            this.txt_availability.Multiline = true;
+            this.txt_availability.Name = "txt_availability";
+            this.txt_availability.Size = new System.Drawing.Size(465, 28);
+            this.txt_availability.TabIndex = 54;
+            // 
             // Copy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1824, 991);
+            this.Controls.Add(this.txt_availability);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.txt_ISBN);
             this.Controls.Add(this.label6);
@@ -471,7 +470,6 @@ namespace LibraryManagementSystem
             this.Controls.Add(this.btn_Update);
             this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.txt_Availability);
             this.Controls.Add(this.txt_PurchasePrice);
             this.Controls.Add(this.txt_CopyID);
             this.Controls.Add(this.label1);
@@ -485,7 +483,7 @@ namespace LibraryManagementSystem
             this.MinimumSize = new System.Drawing.Size(1842, 1028);
             this.Name = "Copy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Copy";
+            this.Text = "Book Copies";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -509,7 +507,6 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_CopyID;
         private System.Windows.Forms.TextBox txt_PurchasePrice;
-        private System.Windows.Forms.TextBox txt_Availability;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.TextBox txt_Search;
@@ -532,5 +529,6 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txt_availability;
     }
 }

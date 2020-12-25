@@ -56,7 +56,6 @@ namespace LibraryManagementSystem
             this.btn_Update = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
             this.txt_LibraryName = new System.Windows.Forms.TextBox();
-            this.txt_Type = new System.Windows.Forms.TextBox();
             this.txt_LibraryID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,6 +64,8 @@ namespace LibraryManagementSystem
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -377,16 +378,6 @@ namespace LibraryManagementSystem
             this.txt_LibraryName.Size = new System.Drawing.Size(465, 25);
             this.txt_LibraryName.TabIndex = 42;
             // 
-            // txt_Type
-            // 
-            this.txt_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Type.Location = new System.Drawing.Point(707, 293);
-            this.txt_Type.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_Type.Multiline = true;
-            this.txt_Type.Name = "txt_Type";
-            this.txt_Type.Size = new System.Drawing.Size(465, 25);
-            this.txt_Type.TabIndex = 41;
-            // 
             // txt_LibraryID
             // 
             this.txt_LibraryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -472,11 +463,37 @@ namespace LibraryManagementSystem
             this.label8.TabIndex = 0;
             this.label8.Text = "LIBRARIES";
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(707, 298);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(61, 22);
+            this.radioButton1.TabIndex = 55;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Main";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(914, 298);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(76, 22);
+            this.radioButton2.TabIndex = 56;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Branch";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1824, 991);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.txt_Address);
             this.Controls.Add(this.label7);
@@ -490,7 +507,6 @@ namespace LibraryManagementSystem
             this.Controls.Add(this.btn_Update);
             this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.txt_LibraryName);
-            this.Controls.Add(this.txt_Type);
             this.Controls.Add(this.txt_LibraryID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -504,7 +520,7 @@ namespace LibraryManagementSystem
             this.MinimumSize = new System.Drawing.Size(1842, 1028);
             this.Name = "Library";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Library";
+            this.Text = "Branch details";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -541,7 +557,6 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Button btn_Update;
         private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.TextBox txt_LibraryName;
-        private System.Windows.Forms.TextBox txt_Type;
         private System.Windows.Forms.TextBox txt_LibraryID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -553,5 +568,7 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
