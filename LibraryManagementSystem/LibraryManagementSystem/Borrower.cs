@@ -154,9 +154,8 @@ namespace LibraryManagementSystem
             string add = "";
             string mail = "";
 
-
-            string qry = "UPDATE Borrower SET Name=@name, Contact=@cont, Address=@add,Email=@mail Where BID= @ID";
-            SqlCommand cmd = new SqlCommand(qry, con);
+            string qrey = "UPDATE Borrower SET Name=@name, Contact=@cont, Address=@add,Email=@mail Where BID= @ID";
+            SqlCommand comd = new SqlCommand(qrey, con);
             try
             {
                 con.Open();
@@ -199,13 +198,13 @@ namespace LibraryManagementSystem
                     mail = txt_Email.Text;
                 }
 
-                cmd.Parameters.AddWithValue("@name", name);
-                cmd.Parameters.AddWithValue("@cont", cont);
-                cmd.Parameters.AddWithValue("@add", add);
-                cmd.Parameters.AddWithValue("@mail", mail);
-                cmd.Parameters.AddWithValue("@ID", txt_BorrowerID.Text);
+                comd.Parameters.AddWithValue("@name", name);
+                comd.Parameters.AddWithValue("@cont", cont);
+                comd.Parameters.AddWithValue("@add", add);
+                comd.Parameters.AddWithValue("@mail", mail);
+                comd.Parameters.AddWithValue("@ID", txt_BorrowerID.Text);
 
-                cmd.ExecuteNonQuery();
+                comd.ExecuteNonQuery();
                 MessageBox.Show("Record Updated Successfully");
             }
             catch (Exception ex)

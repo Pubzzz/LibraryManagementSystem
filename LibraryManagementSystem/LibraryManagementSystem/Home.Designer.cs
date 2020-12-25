@@ -58,6 +58,9 @@ namespace LibraryManagementSystem
             this.panel8 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblBookCount = new System.Windows.Forms.Label();
+            this.lblAuthorCount = new System.Windows.Forms.Label();
+            this.lblLoanCount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -241,6 +244,7 @@ namespace LibraryManagementSystem
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel5.Controls.Add(this.lblBookCount);
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.btn_ViewBooks);
@@ -282,10 +286,12 @@ namespace LibraryManagementSystem
             this.btn_ViewBooks.TabIndex = 0;
             this.btn_ViewBooks.Text = "View";
             this.btn_ViewBooks.UseVisualStyleBackColor = false;
+            this.btn_ViewBooks.Click += new System.EventHandler(this.btn_ViewBooks_Click);
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel6.Controls.Add(this.lblAuthorCount);
             this.panel6.Controls.Add(this.label5);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.btn_ViewAuhors);
@@ -327,10 +333,12 @@ namespace LibraryManagementSystem
             this.btn_ViewAuhors.TabIndex = 0;
             this.btn_ViewAuhors.Text = "View";
             this.btn_ViewAuhors.UseVisualStyleBackColor = false;
+            this.btn_ViewAuhors.Click += new System.EventHandler(this.btn_ViewAuhors_Click);
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel7.Controls.Add(this.lblLoanCount);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Controls.Add(this.btn_ViewLoans);
             this.panel7.Controls.Add(this.button4);
@@ -372,6 +380,7 @@ namespace LibraryManagementSystem
             this.button4.TabIndex = 0;
             this.button4.Text = "View";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel8
             // 
@@ -402,6 +411,33 @@ namespace LibraryManagementSystem
             this.pictureBox1.Size = new System.Drawing.Size(250, 310);
             this.pictureBox1.TabIndex = 38;
             this.pictureBox1.TabStop = false;
+            // 
+            // lblBookCount
+            // 
+            this.lblBookCount.AutoSize = true;
+            this.lblBookCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookCount.Location = new System.Drawing.Point(106, 112);
+            this.lblBookCount.Name = "lblBookCount";
+            this.lblBookCount.Size = new System.Drawing.Size(0, 25);
+            this.lblBookCount.TabIndex = 3;
+            // 
+            // lblAuthorCount
+            // 
+            this.lblAuthorCount.AutoSize = true;
+            this.lblAuthorCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuthorCount.Location = new System.Drawing.Point(113, 112);
+            this.lblAuthorCount.Name = "lblAuthorCount";
+            this.lblAuthorCount.Size = new System.Drawing.Size(0, 25);
+            this.lblAuthorCount.TabIndex = 3;
+            // 
+            // lblLoanCount
+            // 
+            this.lblLoanCount.AutoSize = true;
+            this.lblLoanCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoanCount.Location = new System.Drawing.Point(114, 111);
+            this.lblLoanCount.Name = "lblLoanCount";
+            this.lblLoanCount.Size = new System.Drawing.Size(0, 25);
+            this.lblLoanCount.TabIndex = 3;
             // 
             // Home
             // 
@@ -469,5 +505,8 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblBookCount;
+        private System.Windows.Forms.Label lblAuthorCount;
+        private System.Windows.Forms.Label lblLoanCount;
     }
 }
