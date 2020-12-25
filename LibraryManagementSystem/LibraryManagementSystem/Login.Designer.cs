@@ -29,6 +29,7 @@ namespace LibraryManagementSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.TxtUname = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.btn_Login = new System.Windows.Forms.Button();
@@ -116,6 +117,7 @@ namespace LibraryManagementSystem
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.TxtUname);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

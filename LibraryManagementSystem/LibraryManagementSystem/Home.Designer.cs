@@ -44,23 +44,23 @@ namespace LibraryManagementSystem
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblBookCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_ViewBooks = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lblAuthorCount = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_ViewAuhors = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lblLoanCount = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btn_ViewLoans = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblBookCount = new System.Windows.Forms.Label();
-            this.lblAuthorCount = new System.Windows.Forms.Label();
-            this.lblLoanCount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -254,6 +254,15 @@ namespace LibraryManagementSystem
             this.panel5.Size = new System.Drawing.Size(248, 254);
             this.panel5.TabIndex = 35;
             // 
+            // lblBookCount
+            // 
+            this.lblBookCount.AutoSize = true;
+            this.lblBookCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookCount.Location = new System.Drawing.Point(106, 112);
+            this.lblBookCount.Name = "lblBookCount";
+            this.lblBookCount.Size = new System.Drawing.Size(0, 25);
+            this.lblBookCount.TabIndex = 3;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -301,6 +310,15 @@ namespace LibraryManagementSystem
             this.panel6.Size = new System.Drawing.Size(248, 254);
             this.panel6.TabIndex = 36;
             // 
+            // lblAuthorCount
+            // 
+            this.lblAuthorCount.AutoSize = true;
+            this.lblAuthorCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuthorCount.Location = new System.Drawing.Point(113, 112);
+            this.lblAuthorCount.Name = "lblAuthorCount";
+            this.lblAuthorCount.Size = new System.Drawing.Size(0, 25);
+            this.lblAuthorCount.TabIndex = 3;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -347,6 +365,15 @@ namespace LibraryManagementSystem
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(248, 254);
             this.panel7.TabIndex = 35;
+            // 
+            // lblLoanCount
+            // 
+            this.lblLoanCount.AutoSize = true;
+            this.lblLoanCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoanCount.Location = new System.Drawing.Point(114, 111);
+            this.lblLoanCount.Name = "lblLoanCount";
+            this.lblLoanCount.Size = new System.Drawing.Size(0, 25);
+            this.lblLoanCount.TabIndex = 3;
             // 
             // label8
             // 
@@ -412,33 +439,6 @@ namespace LibraryManagementSystem
             this.pictureBox1.TabIndex = 38;
             this.pictureBox1.TabStop = false;
             // 
-            // lblBookCount
-            // 
-            this.lblBookCount.AutoSize = true;
-            this.lblBookCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBookCount.Location = new System.Drawing.Point(106, 112);
-            this.lblBookCount.Name = "lblBookCount";
-            this.lblBookCount.Size = new System.Drawing.Size(0, 25);
-            this.lblBookCount.TabIndex = 3;
-            // 
-            // lblAuthorCount
-            // 
-            this.lblAuthorCount.AutoSize = true;
-            this.lblAuthorCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAuthorCount.Location = new System.Drawing.Point(113, 112);
-            this.lblAuthorCount.Name = "lblAuthorCount";
-            this.lblAuthorCount.Size = new System.Drawing.Size(0, 25);
-            this.lblAuthorCount.TabIndex = 3;
-            // 
-            // lblLoanCount
-            // 
-            this.lblLoanCount.AutoSize = true;
-            this.lblLoanCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoanCount.Location = new System.Drawing.Point(114, 111);
-            this.lblLoanCount.Name = "lblLoanCount";
-            this.lblLoanCount.Size = new System.Drawing.Size(0, 25);
-            this.lblLoanCount.TabIndex = 3;
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -452,6 +452,7 @@ namespace LibraryManagementSystem
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1842, 1038);
             this.MinimumSize = new System.Drawing.Size(1842, 1028);
