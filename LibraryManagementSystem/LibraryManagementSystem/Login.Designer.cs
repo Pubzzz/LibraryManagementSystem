@@ -41,7 +41,7 @@ namespace LibraryManagementSystem
             // 
             this.TxtUname.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtUname.Location = new System.Drawing.Point(151, 193);
-            this.TxtUname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtUname.Margin = new System.Windows.Forms.Padding(4);
             this.TxtUname.Multiline = true;
             this.TxtUname.Name = "TxtUname";
             this.TxtUname.Size = new System.Drawing.Size(285, 32);
@@ -51,7 +51,7 @@ namespace LibraryManagementSystem
             // 
             this.txtPass.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.Location = new System.Drawing.Point(151, 271);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Multiline = true;
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
@@ -62,13 +62,14 @@ namespace LibraryManagementSystem
             // 
             this.btn_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Login.Location = new System.Drawing.Point(228, 340);
-            this.btn_Login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Login.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(109, 36);
             this.btn_Login.TabIndex = 2;
             this.btn_Login.Text = "LOGIN";
             this.btn_Login.UseVisualStyleBackColor = true;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
+            this.btn_Login.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_Login_KeyDown);
             // 
             // label1
             // 
@@ -99,7 +100,7 @@ namespace LibraryManagementSystem
             this.label3.Location = new System.Drawing.Point(72, 81);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(475, 39);
+            this.label3.Size = new System.Drawing.Size(459, 38);
             this.label3.TabIndex = 5;
             this.label3.Text = "Library Management System";
             // 
@@ -115,8 +116,9 @@ namespace LibraryManagementSystem
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.TxtUname);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

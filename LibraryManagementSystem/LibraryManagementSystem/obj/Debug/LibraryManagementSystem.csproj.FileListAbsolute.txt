@@ -28,3 +28,5 @@ C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagemen
 C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.csproj.CoreCompileInputs.cache
 C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.exe
 C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.pdb
+C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Library.resources
+C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Loan.resources

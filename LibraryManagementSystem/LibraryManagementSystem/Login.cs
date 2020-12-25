@@ -53,5 +53,18 @@ namespace LibraryManagementSystem
                 con.Close();
             }
         }
+
+        private void btn_Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_Login_Click(this, new EventArgs());
+            }
+        }
+
+        private void btn_Login_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
     }
 }

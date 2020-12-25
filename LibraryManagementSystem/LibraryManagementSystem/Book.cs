@@ -21,5 +21,54 @@ namespace LibraryManagementSystem
         {
 
         }
+
+        private void btn_Dashboard_Click(object sender, EventArgs e)
+        {
+            Home two = new Home();
+            this.Hide();
+            two.Show();
+        }
+
+        private void btn_Library_Click(object sender, EventArgs e)
+        {
+            Library two = new Library();
+            this.Hide();
+            two.Show();
+        }
+
+        private void btn_Book_Click(object sender, EventArgs e)
+        {
+            Book two = new Book();
+            this.Hide();
+            two.Show();
+        }
+
+        private void btn_Author_Click(object sender, EventArgs e)
+        {
+            Author two = new Author();
+            this.Hide();
+            two.Show();
+        }
+
+        private void btn_Borrower_Click(object sender, EventArgs e)
+        {
+            Borrower two = new Borrower();
+            this.Hide();
+            two.Show();
+        }
+
+        private void btn_Copy_Click(object sender, EventArgs e)
+        {
+            Copy two = new Copy();
+            this.Hide();
+            two.Show();
+        }
+
+        private void btn_Loan_Click(object sender, EventArgs e)
+        {
+            Loan two = new Loan();
+            this.Hide();
+            two.Show();
+        }
     }
 }
