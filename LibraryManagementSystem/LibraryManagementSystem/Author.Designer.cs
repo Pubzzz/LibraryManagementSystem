@@ -29,6 +29,8 @@ namespace LibraryManagementSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,15 +54,16 @@ namespace LibraryManagementSystem
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Search = new System.Windows.Forms.Button();
             this.txt_Search = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.AuthorGridView = new System.Windows.Forms.DataGridView();
             this.txt_Email = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AuthorGridView)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,7 +115,7 @@ namespace LibraryManagementSystem
             this.btn_Loan.Name = "btn_Loan";
             this.btn_Loan.Size = new System.Drawing.Size(333, 62);
             this.btn_Loan.TabIndex = 19;
-            this.btn_Loan.Text = "LOAN";
+            this.btn_Loan.Text = "LOANS";
             this.btn_Loan.UseVisualStyleBackColor = false;
             this.btn_Loan.Click += new System.EventHandler(this.btn_Loan_Click);
             // 
@@ -126,7 +129,7 @@ namespace LibraryManagementSystem
             this.btn_Library.Name = "btn_Library";
             this.btn_Library.Size = new System.Drawing.Size(333, 62);
             this.btn_Library.TabIndex = 18;
-            this.btn_Library.Text = "LIBRARY";
+            this.btn_Library.Text = "LIBRARIES";
             this.btn_Library.UseVisualStyleBackColor = false;
             this.btn_Library.Click += new System.EventHandler(this.btn_Library_Click);
             // 
@@ -140,7 +143,7 @@ namespace LibraryManagementSystem
             this.btn_Copy.Name = "btn_Copy";
             this.btn_Copy.Size = new System.Drawing.Size(333, 62);
             this.btn_Copy.TabIndex = 15;
-            this.btn_Copy.Text = "COPY";
+            this.btn_Copy.Text = "COPIES";
             this.btn_Copy.UseVisualStyleBackColor = false;
             this.btn_Copy.Click += new System.EventHandler(this.btn_Copy_Click);
             // 
@@ -154,7 +157,7 @@ namespace LibraryManagementSystem
             this.btn_Borrower.Name = "btn_Borrower";
             this.btn_Borrower.Size = new System.Drawing.Size(333, 62);
             this.btn_Borrower.TabIndex = 14;
-            this.btn_Borrower.Text = "BORROWER";
+            this.btn_Borrower.Text = "BORROWERS";
             this.btn_Borrower.UseVisualStyleBackColor = false;
             this.btn_Borrower.Click += new System.EventHandler(this.btn_Borrower_Click);
             // 
@@ -168,7 +171,7 @@ namespace LibraryManagementSystem
             this.btn_Author.Name = "btn_Author";
             this.btn_Author.Size = new System.Drawing.Size(333, 62);
             this.btn_Author.TabIndex = 13;
-            this.btn_Author.Text = "AUTHOR";
+            this.btn_Author.Text = "AUTHORS";
             this.btn_Author.UseVisualStyleBackColor = false;
             this.btn_Author.Click += new System.EventHandler(this.btn_Author_Click);
             // 
@@ -182,7 +185,7 @@ namespace LibraryManagementSystem
             this.btn_Book.Name = "btn_Book";
             this.btn_Book.Size = new System.Drawing.Size(333, 62);
             this.btn_Book.TabIndex = 12;
-            this.btn_Book.Text = "BOOK";
+            this.btn_Book.Text = "BOOKS";
             this.btn_Book.UseVisualStyleBackColor = false;
             this.btn_Book.Click += new System.EventHandler(this.btn_Book_Click);
             // 
@@ -206,10 +209,11 @@ namespace LibraryManagementSystem
             this.btn_Clear.Location = new System.Drawing.Point(1167, 492);
             this.btn_Clear.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(100, 28);
+            this.btn_Clear.Size = new System.Drawing.Size(112, 40);
             this.btn_Clear.TabIndex = 17;
             this.btn_Clear.Text = "CLEAR";
             this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // btn_Delete
             // 
@@ -217,10 +221,11 @@ namespace LibraryManagementSystem
             this.btn_Delete.Location = new System.Drawing.Point(1013, 492);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(100, 28);
+            this.btn_Delete.Size = new System.Drawing.Size(112, 40);
             this.btn_Delete.TabIndex = 16;
             this.btn_Delete.Text = "DELETE";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Update
             // 
@@ -228,10 +233,11 @@ namespace LibraryManagementSystem
             this.btn_Update.Location = new System.Drawing.Point(860, 492);
             this.btn_Update.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Update.Name = "btn_Update";
-            this.btn_Update.Size = new System.Drawing.Size(100, 28);
+            this.btn_Update.Size = new System.Drawing.Size(112, 40);
             this.btn_Update.TabIndex = 15;
             this.btn_Update.Text = "UPDATE";
             this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // btn_Add
             // 
@@ -239,10 +245,11 @@ namespace LibraryManagementSystem
             this.btn_Add.Location = new System.Drawing.Point(707, 492);
             this.btn_Add.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(100, 28);
+            this.btn_Add.Size = new System.Drawing.Size(112, 40);
             this.btn_Add.TabIndex = 14;
             this.btn_Add.Text = "ADD";
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // label3
             // 
@@ -279,6 +286,7 @@ namespace LibraryManagementSystem
             // 
             // txt_ContactNo
             // 
+            this.txt_ContactNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ContactNo.Location = new System.Drawing.Point(705, 326);
             this.txt_ContactNo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_ContactNo.Multiline = true;
@@ -288,6 +296,7 @@ namespace LibraryManagementSystem
             // 
             // txt_AuthorID
             // 
+            this.txt_AuthorID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_AuthorID.Location = new System.Drawing.Point(705, 197);
             this.txt_AuthorID.Margin = new System.Windows.Forms.Padding(4);
             this.txt_AuthorID.Multiline = true;
@@ -297,6 +306,7 @@ namespace LibraryManagementSystem
             // 
             // txt_AuthorName
             // 
+            this.txt_AuthorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_AuthorName.Location = new System.Drawing.Point(705, 264);
             this.txt_AuthorName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_AuthorName.Multiline = true;
@@ -307,6 +317,7 @@ namespace LibraryManagementSystem
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel3.Controls.Add(this.btn_reset);
             this.panel3.Controls.Add(this.btn_Search);
             this.panel3.Controls.Add(this.txt_Search);
             this.panel3.Location = new System.Drawing.Point(483, 586);
@@ -318,35 +329,56 @@ namespace LibraryManagementSystem
             // btn_Search
             // 
             this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.Location = new System.Drawing.Point(593, 22);
+            this.btn_Search.Location = new System.Drawing.Point(785, 21);
             this.btn_Search.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(100, 28);
+            this.btn_Search.Size = new System.Drawing.Size(128, 38);
             this.btn_Search.TabIndex = 25;
-            this.btn_Search.Text = "Search";
+            this.btn_Search.Text = "SEARCH";
             this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // txt_Search
             // 
-            this.txt_Search.Location = new System.Drawing.Point(39, 26);
+            this.txt_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Search.Location = new System.Drawing.Point(222, 21);
             this.txt_Search.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Search.Multiline = true;
             this.txt_Search.Name = "txt_Search";
             this.txt_Search.Size = new System.Drawing.Size(465, 34);
             this.txt_Search.TabIndex = 24;
             // 
-            // dataGridView1
+            // AuthorGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(484, 681);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1267, 297);
-            this.dataGridView1.TabIndex = 28;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AuthorGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.AuthorGridView.ColumnHeadersHeight = 25;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AuthorGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.AuthorGridView.GridColor = System.Drawing.SystemColors.HotTrack;
+            this.AuthorGridView.Location = new System.Drawing.Point(484, 681);
+            this.AuthorGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.AuthorGridView.Name = "AuthorGridView";
+            this.AuthorGridView.ReadOnly = true;
+            this.AuthorGridView.RowHeadersWidth = 51;
+            this.AuthorGridView.Size = new System.Drawing.Size(1267, 297);
+            this.AuthorGridView.TabIndex = 28;
             // 
             // txt_Email
             // 
+            this.txt_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Email.Location = new System.Drawing.Point(705, 388);
             this.txt_Email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Email.Multiline = true;
@@ -386,6 +418,18 @@ namespace LibraryManagementSystem
             this.label7.TabIndex = 0;
             this.label7.Text = "AUTHORS";
             // 
+            // btn_reset
+            // 
+            this.btn_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reset.Location = new System.Drawing.Point(962, 21);
+            this.btn_reset.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(128, 38);
+            this.btn_reset.TabIndex = 26;
+            this.btn_reset.Text = "RESET";
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Author
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -394,7 +438,7 @@ namespace LibraryManagementSystem
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.txt_Email);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.AuthorGridView);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.txt_AuthorName);
             this.Controls.Add(this.txt_AuthorID);
@@ -419,7 +463,7 @@ namespace LibraryManagementSystem
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AuthorGridView)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -450,12 +494,13 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Button btn_Author;
         private System.Windows.Forms.Button btn_Book;
         private System.Windows.Forms.Button btn_Dashboard;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView AuthorGridView;
         private System.Windows.Forms.TextBox txt_Email;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_Loan;
         private System.Windows.Forms.Button btn_Library;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btn_reset;
     }
 }

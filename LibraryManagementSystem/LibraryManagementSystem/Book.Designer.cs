@@ -114,7 +114,7 @@ namespace LibraryManagementSystem
             this.btn_Loan.Name = "btn_Loan";
             this.btn_Loan.Size = new System.Drawing.Size(333, 62);
             this.btn_Loan.TabIndex = 19;
-            this.btn_Loan.Text = "LOAN";
+            this.btn_Loan.Text = "LOANS";
             this.btn_Loan.UseVisualStyleBackColor = false;
             this.btn_Loan.Click += new System.EventHandler(this.btn_Loan_Click);
             // 
@@ -128,7 +128,7 @@ namespace LibraryManagementSystem
             this.btn_Library.Name = "btn_Library";
             this.btn_Library.Size = new System.Drawing.Size(333, 62);
             this.btn_Library.TabIndex = 18;
-            this.btn_Library.Text = "LIBRARY";
+            this.btn_Library.Text = "LIBRARIES";
             this.btn_Library.UseVisualStyleBackColor = false;
             this.btn_Library.Click += new System.EventHandler(this.btn_Library_Click);
             // 
@@ -142,7 +142,7 @@ namespace LibraryManagementSystem
             this.btn_Copy.Name = "btn_Copy";
             this.btn_Copy.Size = new System.Drawing.Size(333, 62);
             this.btn_Copy.TabIndex = 15;
-            this.btn_Copy.Text = "COPY";
+            this.btn_Copy.Text = "COPIES";
             this.btn_Copy.UseVisualStyleBackColor = false;
             this.btn_Copy.Click += new System.EventHandler(this.btn_Copy_Click);
             // 
@@ -156,7 +156,7 @@ namespace LibraryManagementSystem
             this.btn_Borrower.Name = "btn_Borrower";
             this.btn_Borrower.Size = new System.Drawing.Size(333, 62);
             this.btn_Borrower.TabIndex = 14;
-            this.btn_Borrower.Text = "BORROWER";
+            this.btn_Borrower.Text = "BORROWERS";
             this.btn_Borrower.UseVisualStyleBackColor = false;
             this.btn_Borrower.Click += new System.EventHandler(this.btn_Borrower_Click);
             // 
@@ -170,7 +170,7 @@ namespace LibraryManagementSystem
             this.btn_Author.Name = "btn_Author";
             this.btn_Author.Size = new System.Drawing.Size(333, 62);
             this.btn_Author.TabIndex = 13;
-            this.btn_Author.Text = "AUTHOR";
+            this.btn_Author.Text = "AUTHORS";
             this.btn_Author.UseVisualStyleBackColor = false;
             this.btn_Author.Click += new System.EventHandler(this.btn_Author_Click);
             // 
@@ -184,7 +184,7 @@ namespace LibraryManagementSystem
             this.btn_Book.Name = "btn_Book";
             this.btn_Book.Size = new System.Drawing.Size(333, 62);
             this.btn_Book.TabIndex = 12;
-            this.btn_Book.Text = "BOOK";
+            this.btn_Book.Text = "BOOKS";
             this.btn_Book.UseVisualStyleBackColor = false;
             this.btn_Book.Click += new System.EventHandler(this.btn_Book_Click);
             // 
