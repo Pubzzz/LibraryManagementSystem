@@ -150,12 +150,12 @@ namespace LibraryManagementSystem
         private void btn_Update_Click(object sender, EventArgs e)
         {
             string name = "";
-            string contact = "";
-            string address = "";
+            string cont = "";
+            string add = "";
             string mail = "";
 
 
-            string qry = "UPDATE Borrower SET Name=@name, Contact=@contact, Address=@address,Email=@mail Where BID= @ID";
+            string qry = "UPDATE Borrower SET Name=@name, Contact=@cont, Address=@add,Email=@mail Where BID= @ID";
             SqlCommand cmd = new SqlCommand(qry, con);
             try
             {
@@ -172,8 +172,8 @@ namespace LibraryManagementSystem
                             DataRow dr = Dt.NewRow();
 
                             name = row.Cells[1].Value.ToString();
-                            contact = row.Cells[2].Value.ToString();
-                            address = row.Cells[3].Value.ToString();
+                            cont = row.Cells[2].Value.ToString();
+                            add = row.Cells[3].Value.ToString();
                             mail = row.Cells[4].Value.ToString();
                             break;
                         }
@@ -187,12 +187,12 @@ namespace LibraryManagementSystem
 
                 if (txt_ContactNo.Text != null && txt_ContactNo.Text != String.Empty)
                 {
-                    contact = txt_ContactNo.Text;
+                    cont = txt_ContactNo.Text;
                 }
 
                 if (txt_Address.Text != null && txt_Address.Text != String.Empty)
                 {
-                    address = txt_Address.Text;
+                    add = txt_Address.Text;
                 }
                 if (txt_Email.Text != null && txt_Email.Text != String.Empty)
                 {
@@ -200,8 +200,8 @@ namespace LibraryManagementSystem
                 }
 
                 cmd.Parameters.AddWithValue("@name", name);
-                cmd.Parameters.AddWithValue("@contact", contact);
-                cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@cont", cont);
+                cmd.Parameters.AddWithValue("@add", add);
                 cmd.Parameters.AddWithValue("@mail", mail);
                 cmd.Parameters.AddWithValue("@ID", txt_BorrowerID.Text);
 
@@ -218,6 +218,7 @@ namespace LibraryManagementSystem
                 BorrowerGridView.DataSource = null;
                 LoadAllCustomer();
             }
+             
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)

@@ -29,6 +29,8 @@ namespace LibraryManagementSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Loan = new System.Windows.Forms.Button();
             this.btn_Library = new System.Windows.Forms.Button();
@@ -44,7 +46,7 @@ namespace LibraryManagementSystem
             this.label4 = new System.Windows.Forms.Label();
             this.txt_CopyID = new System.Windows.Forms.TextBox();
             this.txt_PurchasePrice = new System.Windows.Forms.TextBox();
-            this.txt_NoCopies = new System.Windows.Forms.TextBox();
+            this.txt_Availability = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_Search = new System.Windows.Forms.Button();
             this.txt_Search = new System.Windows.Forms.TextBox();
@@ -52,17 +54,18 @@ namespace LibraryManagementSystem
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Update = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CopyGridView = new System.Windows.Forms.DataGridView();
             this.txt_SellingPrice = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_ISBN = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CopyGridView)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -209,9 +212,9 @@ namespace LibraryManagementSystem
             this.label1.Location = new System.Drawing.Point(479, 262);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 20);
+            this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 23;
-            this.label1.Text = "No of Copies";
+            this.label1.Text = "Availability";
             // 
             // label2
             // 
@@ -237,6 +240,7 @@ namespace LibraryManagementSystem
             // 
             // txt_CopyID
             // 
+            this.txt_CopyID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_CopyID.Location = new System.Drawing.Point(707, 192);
             this.txt_CopyID.Margin = new System.Windows.Forms.Padding(4);
             this.txt_CopyID.Multiline = true;
@@ -246,6 +250,7 @@ namespace LibraryManagementSystem
             // 
             // txt_PurchasePrice
             // 
+            this.txt_PurchasePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_PurchasePrice.Location = new System.Drawing.Point(707, 315);
             this.txt_PurchasePrice.Margin = new System.Windows.Forms.Padding(4);
             this.txt_PurchasePrice.Multiline = true;
@@ -253,18 +258,20 @@ namespace LibraryManagementSystem
             this.txt_PurchasePrice.Size = new System.Drawing.Size(465, 25);
             this.txt_PurchasePrice.TabIndex = 25;
             // 
-            // txt_NoCopies
+            // txt_Availability
             // 
-            this.txt_NoCopies.Location = new System.Drawing.Point(707, 257);
-            this.txt_NoCopies.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_NoCopies.Multiline = true;
-            this.txt_NoCopies.Name = "txt_NoCopies";
-            this.txt_NoCopies.Size = new System.Drawing.Size(465, 25);
-            this.txt_NoCopies.TabIndex = 26;
+            this.txt_Availability.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Availability.Location = new System.Drawing.Point(707, 257);
+            this.txt_Availability.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Availability.Multiline = true;
+            this.txt_Availability.Name = "txt_Availability";
+            this.txt_Availability.Size = new System.Drawing.Size(465, 25);
+            this.txt_Availability.TabIndex = 26;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.btn_Search);
             this.panel3.Controls.Add(this.txt_Search);
             this.panel3.Location = new System.Drawing.Point(483, 586);
@@ -276,79 +283,105 @@ namespace LibraryManagementSystem
             // btn_Search
             // 
             this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.Location = new System.Drawing.Point(593, 22);
+            this.btn_Search.Location = new System.Drawing.Point(817, 18);
             this.btn_Search.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(100, 28);
+            this.btn_Search.Size = new System.Drawing.Size(138, 43);
             this.btn_Search.TabIndex = 25;
-            this.btn_Search.Text = "Search";
+            this.btn_Search.Text = "SEARCH";
             this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // txt_Search
             // 
-            this.txt_Search.Location = new System.Drawing.Point(39, 26);
+            this.txt_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Search.Location = new System.Drawing.Point(224, 26);
             this.txt_Search.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Search.Multiline = true;
             this.txt_Search.Name = "txt_Search";
-            this.txt_Search.Size = new System.Drawing.Size(465, 24);
+            this.txt_Search.Size = new System.Drawing.Size(465, 32);
             this.txt_Search.TabIndex = 24;
             // 
             // btn_Clear
             // 
             this.btn_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Clear.Location = new System.Drawing.Point(1167, 492);
+            this.btn_Clear.Location = new System.Drawing.Point(1166, 505);
             this.btn_Clear.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(100, 28);
+            this.btn_Clear.Size = new System.Drawing.Size(121, 33);
             this.btn_Clear.TabIndex = 31;
             this.btn_Clear.Text = "CLEAR";
             this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // btn_Delete
             // 
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Delete.Location = new System.Drawing.Point(1013, 492);
+            this.btn_Delete.Location = new System.Drawing.Point(1012, 505);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(100, 28);
+            this.btn_Delete.Size = new System.Drawing.Size(121, 33);
             this.btn_Delete.TabIndex = 30;
             this.btn_Delete.Text = "DELETE";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Update
             // 
             this.btn_Update.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Update.Location = new System.Drawing.Point(860, 492);
+            this.btn_Update.Location = new System.Drawing.Point(859, 505);
             this.btn_Update.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Update.Name = "btn_Update";
-            this.btn_Update.Size = new System.Drawing.Size(100, 28);
+            this.btn_Update.Size = new System.Drawing.Size(121, 33);
             this.btn_Update.TabIndex = 29;
             this.btn_Update.Text = "UPDATE";
             this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // btn_Add
             // 
             this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Add.Location = new System.Drawing.Point(707, 492);
+            this.btn_Add.Location = new System.Drawing.Point(706, 505);
             this.btn_Add.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(100, 28);
+            this.btn_Add.Size = new System.Drawing.Size(121, 33);
             this.btn_Add.TabIndex = 28;
             this.btn_Add.Text = "ADD";
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
-            // dataGridView1
+            // CopyGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(483, 676);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1267, 302);
-            this.dataGridView1.TabIndex = 32;
+            this.CopyGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CopyGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CopyGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.CopyGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.CopyGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            this.CopyGridView.GridColor = System.Drawing.SystemColors.HotTrack;
+            this.CopyGridView.Location = new System.Drawing.Point(483, 676);
+            this.CopyGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.CopyGridView.Name = "CopyGridView";
+            this.CopyGridView.RowHeadersWidth = 51;
+            this.CopyGridView.Size = new System.Drawing.Size(1267, 302);
+            this.CopyGridView.TabIndex = 32;
             // 
             // txt_SellingPrice
             // 
+            this.txt_SellingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_SellingPrice.Location = new System.Drawing.Point(707, 367);
             this.txt_SellingPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txt_SellingPrice.Multiline = true;
@@ -369,6 +402,7 @@ namespace LibraryManagementSystem
             // 
             // txt_ISBN
             // 
+            this.txt_ISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ISBN.Location = new System.Drawing.Point(707, 426);
             this.txt_ISBN.Margin = new System.Windows.Forms.Padding(4);
             this.txt_ISBN.Multiline = true;
@@ -408,6 +442,18 @@ namespace LibraryManagementSystem
             this.label7.TabIndex = 0;
             this.label7.Text = "COPIES";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1008, 18);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 43);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "RESET";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Copy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -418,13 +464,13 @@ namespace LibraryManagementSystem
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_SellingPrice);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.CopyGridView);
             this.Controls.Add(this.btn_Clear);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Update);
             this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.txt_NoCopies);
+            this.Controls.Add(this.txt_Availability);
             this.Controls.Add(this.txt_PurchasePrice);
             this.Controls.Add(this.txt_CopyID);
             this.Controls.Add(this.label1);
@@ -443,7 +489,7 @@ namespace LibraryManagementSystem
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CopyGridView)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -461,7 +507,7 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_CopyID;
         private System.Windows.Forms.TextBox txt_PurchasePrice;
-        private System.Windows.Forms.TextBox txt_NoCopies;
+        private System.Windows.Forms.TextBox txt_Availability;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.TextBox txt_Search;
@@ -474,7 +520,7 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Button btn_Author;
         private System.Windows.Forms.Button btn_Book;
         private System.Windows.Forms.Button btn_Dashboard;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView CopyGridView;
         private System.Windows.Forms.TextBox txt_SellingPrice;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_ISBN;
@@ -483,5 +529,6 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Button btn_Library;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
     }
 }
