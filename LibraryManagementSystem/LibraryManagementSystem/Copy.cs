@@ -100,6 +100,11 @@ namespace LibraryManagementSystem
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            string Avail = "Available";
+            if (no.Checked)
+            {
+                Avail = "Not Available";
+            }
             string qry = "SELECT * FROM Book where ISBN='" + txt_ISBN.Text + "' ";
             SqlCommand cmd = new SqlCommand(qry, con);
             try
@@ -140,7 +145,7 @@ namespace LibraryManagementSystem
                     }
                     else
                     {
-                        string qury = "INSERT INTO Copy VALUES ('" + txt_CopyID.Text + "','" + txt_availability.Text + "','" + txt_PurchasePrice.Text + "','" + txt_SellingPrice.Text + "','" + txt_ISBN.Text + "')";
+                    string qury = "INSERT INTO Copy VALUES ('" + txt_CopyID.Text + "','" + Avail + "','" + txt_PurchasePrice.Text + "','" + txt_SellingPrice.Text + "','" + txt_ISBN.Text + "')";
                         SqlCommand commd = new SqlCommand(qury, con);
 
                         try
@@ -212,7 +217,8 @@ namespace LibraryManagementSystem
         private void btn_Clear_Click(object sender, EventArgs e)
         {
             txt_CopyID.Text = "";
-            txt_availability.Text = "";
+            yes.Checked = false;
+            no.Checked = false;
             txt_PurchasePrice.Text = "";
             txt_SellingPrice.Text = "";
             txt_ISBN.Text = "";
@@ -253,9 +259,13 @@ namespace LibraryManagementSystem
                     }
                 }
 
-                if (txt_availability.Text != null && txt_availability.Text != String.Empty)
+                if (yes.Checked)
                 {
-                    Avail = txt_availability.Text;
+                    Avail = "Available";
+                }
+                else
+                {
+                    Avail = "Not Available";
                 }
 
                 if (txt_PurchasePrice.Text != null && txt_PurchasePrice.Text != String.Empty)

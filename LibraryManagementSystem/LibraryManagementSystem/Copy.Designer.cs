@@ -62,7 +62,8 @@ namespace LibraryManagementSystem
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.txt_availability = new System.Windows.Forms.TextBox();
+            this.yes = new System.Windows.Forms.RadioButton();
+            this.no = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -445,20 +446,37 @@ namespace LibraryManagementSystem
             this.label7.TabIndex = 0;
             this.label7.Text = "COPIES";
             // 
-            // txt_availability
+            // yes
             // 
-            this.txt_availability.Location = new System.Drawing.Point(707, 254);
-            this.txt_availability.Multiline = true;
-            this.txt_availability.Name = "txt_availability";
-            this.txt_availability.Size = new System.Drawing.Size(465, 28);
-            this.txt_availability.TabIndex = 54;
+            this.yes.AutoSize = true;
+            this.yes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yes.Location = new System.Drawing.Point(707, 260);
+            this.yes.Name = "yes";
+            this.yes.Size = new System.Drawing.Size(86, 22);
+            this.yes.TabIndex = 54;
+            this.yes.TabStop = true;
+            this.yes.Text = "Available";
+            this.yes.UseVisualStyleBackColor = true;
+            // 
+            // no
+            // 
+            this.no.AutoSize = true;
+            this.no.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.no.Location = new System.Drawing.Point(898, 262);
+            this.no.Name = "no";
+            this.no.Size = new System.Drawing.Size(113, 22);
+            this.no.TabIndex = 55;
+            this.no.TabStop = true;
+            this.no.Text = "Not available";
+            this.no.UseVisualStyleBackColor = true;
             // 
             // Copy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1824, 991);
-            this.Controls.Add(this.txt_availability);
+            this.Controls.Add(this.no);
+            this.Controls.Add(this.yes);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.txt_ISBN);
             this.Controls.Add(this.label6);
@@ -529,6 +547,7 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txt_availability;
+        private System.Windows.Forms.RadioButton yes;
+        private System.Windows.Forms.RadioButton no;
     }
 }

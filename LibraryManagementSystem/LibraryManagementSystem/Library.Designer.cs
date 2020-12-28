@@ -95,6 +95,7 @@ namespace LibraryManagementSystem
             this.button1.TabIndex = 26;
             this.button1.Text = "RESET";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_Search
             // 
@@ -106,6 +107,7 @@ namespace LibraryManagementSystem
             this.btn_Search.TabIndex = 25;
             this.btn_Search.Text = "SEARCH";
             this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // txt_Search
             // 
@@ -334,6 +336,7 @@ namespace LibraryManagementSystem
             this.btn_Clear.TabIndex = 46;
             this.btn_Clear.Text = "CLEAR";
             this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // btn_Delete
             // 
@@ -345,6 +348,7 @@ namespace LibraryManagementSystem
             this.btn_Delete.TabIndex = 45;
             this.btn_Delete.Text = "DELETE";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Update
             // 
@@ -356,6 +360,7 @@ namespace LibraryManagementSystem
             this.btn_Update.TabIndex = 44;
             this.btn_Update.Text = "UPDATE";
             this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // btn_Add
             // 
@@ -367,6 +372,7 @@ namespace LibraryManagementSystem
             this.btn_Add.TabIndex = 43;
             this.btn_Add.Text = "ADD";
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // txt_LibraryName
             // 
