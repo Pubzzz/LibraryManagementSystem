@@ -123,7 +123,7 @@ namespace LibraryManagementSystem
 
                 if (DS.Rows.Count == 1)
                 {
-                    MessageBox.Show("This Book has been already registered ");
+                    MessageBox.Show("This Book has already been registered ");
                 }
                 else
                 {

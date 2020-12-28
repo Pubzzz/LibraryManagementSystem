@@ -50,13 +50,65 @@ namespace LibraryManagementSystem
         }
         private void btn_Add_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM Loan where LoanID='" + txt_LoanID.Text + "' ";
-            SqlCommand comd = new SqlCommand(query, con);
-
+            txt_LendingDate.Text = DateTime.Now.ToString("dd MMMM, yyyy");
+           
+           //CHECK WHETHER THE BID,CID AND LOAN ID ARE VALID EXCEPTIONS 
+                string qry = "SELECT * FROM Borrower where BID='" + txt_BorrowerID.Text + "' ";
+                SqlCommand comd = new SqlCommand(qry, con);
             try
             {
                 con.Open();
                 SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
+
+                if (DS.Rows.Count == 0)
+                {
+                    MessageBox.Show("This borrower is not a registered user");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured : " + ex);
+            }
+            finally
+            {
+                con.Close();
+                LoadAllCustomer();
+            }
+           
+                string qery = "SELECT * FROM Copy where CopyID='" + txt_CopyID.Text + "' ";
+                SqlCommand cmmmd = new SqlCommand(qery, con);
+                try
+                {
+                    con.Open();
+                    SqlDataAdapter DA = new SqlDataAdapter(cmmmd);
+                    DataTable DS = new DataTable();
+                    DA.Fill(DS);
+
+                    if (DS.Rows.Count == 0)
+                    {
+                        MessageBox.Show("This CopyID does not exist");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured : " + ex);
+                }
+                finally
+                {
+                    con.Close();
+                    LoadAllCustomer();
+                }
+           
+            
+            string query = "SELECT * FROM Loan where LoanID='" + txt_LoanID.Text + "' ";
+            SqlCommand cmmd = new SqlCommand(query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataAdapter DA = new SqlDataAdapter(cmmd);
                 DataTable DS = new DataTable();
                 DA.Fill(DS);
 

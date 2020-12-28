@@ -333,12 +333,12 @@ namespace LibraryManagementSystem
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(45, 32);
+            this.label6.Location = new System.Drawing.Point(49, 32);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(169, 50);
+            this.label6.Size = new System.Drawing.Size(154, 50);
             this.label6.TabIndex = 1;
-            this.label6.Text = "RECONGNISED\r\n     AUTHORS";
+            this.label6.Text = "RECOGNISED\r\n   AUTHORS";
             // 
             // btn_ViewAuhors
             // 
