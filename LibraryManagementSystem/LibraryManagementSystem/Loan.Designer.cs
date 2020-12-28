@@ -35,7 +35,7 @@ namespace LibraryManagementSystem
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_search = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Loan = new System.Windows.Forms.Button();
             this.btn_Library = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@ namespace LibraryManagementSystem
             this.panel3.BackColor = System.Drawing.Color.SteelBlue;
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.btn_Search);
-            this.panel3.Controls.Add(this.textBox4);
+            this.panel3.Controls.Add(this.txt_search);
             this.panel3.Location = new System.Drawing.Point(484, 558);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
@@ -92,6 +92,7 @@ namespace LibraryManagementSystem
             this.button1.TabIndex = 53;
             this.button1.Text = "RESET";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_Search
             // 
@@ -103,16 +104,17 @@ namespace LibraryManagementSystem
             this.btn_Search.TabIndex = 25;
             this.btn_Search.Text = "SEARCH";
             this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
-            // textBox4
+            // txt_search
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(223, 26);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(465, 36);
-            this.textBox4.TabIndex = 24;
+            this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_search.Location = new System.Drawing.Point(223, 26);
+            this.txt_search.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_search.Multiline = true;
+            this.txt_search.Name = "txt_search";
+            this.txt_search.Size = new System.Drawing.Size(465, 36);
+            this.txt_search.TabIndex = 24;
             // 
             // panel1
             // 
@@ -501,7 +503,7 @@ namespace LibraryManagementSystem
 
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_Search;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_search;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_Copy;
         private System.Windows.Forms.Button btn_Borrower;
