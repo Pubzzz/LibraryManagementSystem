@@ -63,6 +63,8 @@ namespace LibraryManagementSystem
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -269,9 +271,9 @@ namespace LibraryManagementSystem
             this.label6.Location = new System.Drawing.Point(480, 409);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 20);
+            this.label6.Size = new System.Drawing.Size(111, 20);
             this.label6.TabIndex = 50;
-            this.label6.Text = "Returned Date";
+            this.label6.Text = "Return Date";
             // 
             // txt_LendingDate
             // 
@@ -455,11 +457,36 @@ namespace LibraryManagementSystem
             this.label7.TabIndex = 0;
             this.label7.Text = "LOANS";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1369, 186);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(382, 53);
+            this.button2.TabIndex = 53;
+            this.button2.Text = "OVERDUE LOANS";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(1369, 271);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(382, 58);
+            this.button3.TabIndex = 54;
+            this.button3.Text = "FINE PAYMENTS";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1824, 991);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.txt_ReturnedDate);
             this.Controls.Add(this.label6);
@@ -532,5 +559,7 @@ namespace LibraryManagementSystem
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

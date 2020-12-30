@@ -70,6 +70,12 @@
     <Compile Include="Copy.Designer.cs">
       <DependentUpon>Copy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Delayed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Delayed.Designer.cs">
+      <DependentUpon>Delayed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Copy.resx">
       <DependentUpon>Copy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Delayed.resx">
+      <DependentUpon>Delayed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

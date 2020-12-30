@@ -16,7 +16,6 @@ G:\NSBM\C# Final\New folder\LibraryManagementSystem\LibraryManagementSystem\obj\
 C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.exe.config
 C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.exe
 C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.pdb
-C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.csprojAssemblyReference.cache
 C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Author.resources
 C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Book.resources
 C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Borrower.resources

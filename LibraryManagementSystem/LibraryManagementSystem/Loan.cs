@@ -318,5 +318,10 @@ namespace LibraryManagementSystem
             bindingSource1.DataSource = DS.Tables["Loan"];
             LoanGridView.DataSource = bindingSource1;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
