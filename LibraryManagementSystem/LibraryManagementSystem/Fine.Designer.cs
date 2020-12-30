@@ -90,6 +90,7 @@
             this.btn_pay.TabIndex = 7;
             this.btn_pay.Text = "PAY";
             this.btn_pay.UseVisualStyleBackColor = false;
+            this.btn_pay.Click += new System.EventHandler(this.btn_pay_Click);
             // 
             // PaymentsGridView
             // 

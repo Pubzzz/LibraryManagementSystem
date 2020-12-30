@@ -52,5 +52,40 @@ namespace LibraryManagementSystem
         {
 
         }
+
+        private void btn_pay_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+            {
+                using (SqlCommand cmd = new SqlCommand("spInsertPayment", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@LoanId", SqlDbType.VarChar).Value = txt_LID.Text;
+                    cmd.Parameters.Add("@BorrowerID", SqlDbType.VarChar).Value = txt_BID.Text;
+                    cmd.Parameters.Add("@payment", SqlDbType.VarChar).Value = txt_Payment.Text;
+                    cmd.Parameters.Add("@date", SqlDbType.VarChar).Value = DateTime.Now.ToString("dd MMMM, yyyy");
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Record added Successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occured : " + ex);
+                    }
+                    finally
+                    {
+                        conn.Close();
+                        con.Close();
+                        PaymentsGridView.DataSource = null;
+                        LoadAllCustomer();
+                    }
+                }
+            }
+            con.Close();
+        }
     }
 }
