@@ -70,7 +70,7 @@ namespace LibraryManagementSystem
                     {
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Record added Successfully");
+                        MessageBox.Show("Transaction Successful");
                     }
                     catch (Exception ex)
                     {
