@@ -323,5 +323,11 @@ namespace LibraryManagementSystem
             Form1 one = new Form1();
             one.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Fine one = new Fine();
+            one.Show();
+        }
     }
 }
