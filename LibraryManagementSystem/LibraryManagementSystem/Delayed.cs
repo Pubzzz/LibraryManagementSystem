@@ -30,7 +30,7 @@ namespace LibraryManagementSystem
                 bindingSource1.DataSource = null;
 
                 con.Open();
-                string qry = "Select * from Loan";
+                string qry = "Select * from Overdue";
 
                 DA = new SqlDataAdapter(qry, con);
 
@@ -55,7 +55,7 @@ namespace LibraryManagementSystem
 
         private void search_Click(object sender, EventArgs e)
         {
-            string query = "Select * from Loan where LoanID ='" +txt_search.Text + "'";
+            string query = "Select * from Overdue where LoanID ='" +txt_search.Text + "' ";
             SqlDataAdapter DA = new SqlDataAdapter(query, con);
 
             DataSet DS = new DataSet();
