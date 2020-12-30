@@ -50,6 +50,7 @@
             // 
             // txt_search
             // 
+            this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_search.Location = new System.Drawing.Point(262, 59);
             this.txt_search.Multiline = true;
             this.txt_search.Name = "txt_search";
@@ -107,6 +108,8 @@
             this.Controls.Add(this.txt_search);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1110, 626);
+            this.MinimumSize = new System.Drawing.Size(1110, 626);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Overdue Loans";

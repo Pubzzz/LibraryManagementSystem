@@ -51,10 +51,11 @@ namespace LibraryManagementSystem
         private void btn_Add_Click(object sender, EventArgs e)
         {
             txt_LendingDate.Text = DateTime.Now.ToString("dd MMMM, yyyy");
-           
-           //CHECK WHETHER THE BID,CID AND LOAN ID ARE VALID EXCEPTIONS 
-                string qry = "SELECT * FROM Borrower where BID='" + txt_BorrowerID.Text + "' ";
-                SqlCommand comd = new SqlCommand(qry, con);
+
+            //CHECK WHETHER THE BID,CID AND LOAN ID ARE VALID EXCEPTIONS 
+
+            string qry = "SELECT * FROM Borrower where BID='" + txt_BorrowerID.Text + "' ";
+            SqlCommand comd = new SqlCommand(qry, con);
             try
             {
                 con.Open();
@@ -76,32 +77,32 @@ namespace LibraryManagementSystem
                 con.Close();
                 LoadAllCustomer();
             }
-           
-                string qery = "SELECT * FROM Copy where CopyID='" + txt_CopyID.Text + "' ";
-                SqlCommand cmmmd = new SqlCommand(qery, con);
-                try
-                {
-                    con.Open();
-                    SqlDataAdapter DA = new SqlDataAdapter(cmmmd);
-                    DataTable DS = new DataTable();
-                    DA.Fill(DS);
 
-                    if (DS.Rows.Count == 0)
-                    {
-                        MessageBox.Show("This CopyID does not exist");
-                    }
-                }
-                catch (Exception ex)
+            string qery = "SELECT * FROM Copy where CopyID='" + txt_CopyID.Text + "' ";
+            SqlCommand cmmmd = new SqlCommand(qery, con);
+            try
+            {
+                con.Open();
+                SqlDataAdapter DA = new SqlDataAdapter(cmmmd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
+
+                if (DS.Rows.Count == 0)
                 {
-                    MessageBox.Show("Error occured : " + ex);
+                    MessageBox.Show("This CopyID does not exist");
                 }
-                finally
-                {
-                    con.Close();
-                    LoadAllCustomer();
-                }
-           
-            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured : " + ex);
+            }
+            finally
+            {
+                con.Close();
+                LoadAllCustomer();
+            }
+
+
             string query = "SELECT * FROM Loan where LoanID='" + txt_LoanID.Text + "' ";
             SqlCommand cmmd = new SqlCommand(query, con);
 
@@ -116,28 +117,6 @@ namespace LibraryManagementSystem
                 {
                     MessageBox.Show("This Loan ID is already used");
                 }
-                else
-                {
-                    string qury = "INSERT INTO Loan VALUES ('" + txt_LoanID.Text + "','" + txt_CopyID.Text + "','" + txt_BorrowerID.Text + "','" + txt_LendingDate.Text + "','" + txt_ReturnedDate.Text + "')";
-                    SqlCommand cmd = new SqlCommand(qury, con);
-
-                    try
-                    {
-
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Record added Successfully");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occured : " + ex);
-                    }
-                    finally
-                    {
-                        con.Close();
-                        LoanGridView.DataSource = null;
-                        LoadAllCustomer();
-                    }
-                }
             }
             catch (Exception ex)
             {
@@ -146,6 +125,26 @@ namespace LibraryManagementSystem
             finally
             {
                 con.Close();
+            }
+
+            string qury = "INSERT INTO Loan VALUES ('" + txt_LoanID.Text + "','" + txt_CopyID.Text + "','" + txt_BorrowerID.Text + "','" + txt_LendingDate.Text + "','" + txt_ReturnedDate.Text + "')";
+            SqlCommand cmd = new SqlCommand(qury, con);
+
+            try
+            {
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Record added Successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured : " + ex);
+            }
+            finally
+            {
+                con.Close();
+                LoanGridView.DataSource = null;
+                LoadAllCustomer();
             }
         }
 
@@ -321,7 +320,8 @@ namespace LibraryManagementSystem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            Form1 one = new Form1();
+            one.Show();
         }
     }
 }

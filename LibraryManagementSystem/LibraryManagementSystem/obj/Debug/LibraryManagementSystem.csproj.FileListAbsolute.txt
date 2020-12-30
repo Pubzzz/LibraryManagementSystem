@@ -46,3 +46,5 @@ G:\NSBM\DB\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSyst
 G:\NSBM\DB\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.csproj.CoreCompileInputs.cache
 G:\NSBM\DB\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.exe
 G:\NSBM\DB\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.pdb
+C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.csprojAssemblyReference.cache
+C:\Users\Pubz\OneDrive\Documents\GitHub\LibraryManagementSystem\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Form1.resources
