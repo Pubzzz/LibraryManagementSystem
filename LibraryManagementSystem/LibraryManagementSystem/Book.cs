@@ -127,9 +127,9 @@ namespace LibraryManagementSystem
                 }
                 else
                 {
-                    using (SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
                     {
-                        using (SqlCommand cmd = new SqlCommand("spInsertBooks", con))
+                        using (SqlCommand cmd = new SqlCommand("spInsertBooks", conn))
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -140,7 +140,8 @@ namespace LibraryManagementSystem
                             cmd.Parameters.Add("@subject", SqlDbType.VarChar).Value = txt_Subject.Text;
 
                             try
-                            { 
+                            {
+                                conn.Open();
                                 cmd.ExecuteNonQuery();
                                 MessageBox.Show("Record added Successfully");
                             }
@@ -150,12 +151,14 @@ namespace LibraryManagementSystem
                             }
                             finally
                             {
-                                
+                                conn.Close();
+                                con.Close();
                                 BookGridView.DataSource = null;
                                 LoadAllCustomer();
                             }
                         }
                     }
+                    con.Close();
                 }
             }
             catch (Exception ex)
@@ -166,54 +169,6 @@ namespace LibraryManagementSystem
             {
                 con.Close();
             }
-
-            /*
-            string query = "SELECT * FROM Book where ISBN='" + txt_ISBN.Text + "' ";
-            SqlCommand comd = new SqlCommand(query, con);
-
-            try
-            {
-                con.Open();
-                SqlDataAdapter DA = new SqlDataAdapter(comd);
-                DataTable DS = new DataTable();
-                DA.Fill(DS);
-
-                if (DS.Rows.Count == 1)
-                {
-                    MessageBox.Show("This Book has already been registered ");
-                }
-                else
-                {
-                    string qury = "INSERT INTO Book VALUES ('" + txt_ISBN.Text + "','" + txt_Title.Text + "','" + txt_Author.Text + "','" + txt_NoCopies.Text + "','" + txt_Subject.Text + "')";
-                    SqlCommand cmd = new SqlCommand(qury, con);
-
-                    try
-                    {
-
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Record added Successfully");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occured : " + ex);
-                    }
-                    finally
-                    {
-                        con.Close();
-                        BookGridView.DataSource = null;
-                        LoadAllCustomer();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error generated : " + ex);
-            }
-            finally
-            {
-                con.Close();
-            }
-            */
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
