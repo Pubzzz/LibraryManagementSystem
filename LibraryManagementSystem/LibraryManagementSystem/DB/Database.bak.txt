@@ -76,4 +76,27 @@ CREATE TABLE [dbo].[Payment] (
     PRIMARY KEY CLUSTERED ([LoanID] ASC)
 );
 
+*********NEW**************
 
+
+CREATE TABLE [dbo].[Loan] (
+    [LoanID] NCHAR (10) NOT NULL,
+    [CopyID] NCHAR (10) NOT NULL,
+    [BID]    NCHAR (10) NOT NULL,
+    [LDate]  DATE       NULL,
+    [RDate]  DATE       NULL, 
+    CONSTRAINT [PK_Loan] PRIMARY KEY ([LoanID]),
+    CONSTRAINT [FK_Loan] FOREIGN KEY([CopyID])
+    REFERENCES [dbo].[Copy] ([CopyID])
+);
+
+CREATE TABLE [dbo].[Book] (
+    [ISBN]         BIGINT     NOT NULL,
+    [Title]        NCHAR (30) NOT NULL,
+    [AuthorID]       NCHAR (10) NOT NULL,
+    [No.of.copies] NCHAR (10) NULL,
+    [Subject]      NCHAR (10) NULL, 
+    CONSTRAINT [PK_Book] PRIMARY KEY ([ISBN]),
+    CONSTRAINT [FK_Book] FOREIGN KEY([AuthorID])
+    REFERENCES [dbo].[Author] ([AuthorID])
+);
