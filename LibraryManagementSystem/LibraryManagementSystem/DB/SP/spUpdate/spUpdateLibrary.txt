@@ -1,0 +1,30 @@
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spUpdateLibrary
+@libraryId NCHAR,
+@name NCHAR,
+@type NCHAR,
+@administrator NCHAR,
+@contact NCHAR,
+@address NCHAR
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+	UPDATE [dbo].[Library] 
+	SET 
+	[LibId] = @libraryId, 
+	[name] = @name, 
+	[type] = @type, 
+	[administrator] = @administrator
+	WHERE [LibId] = @libraryId;
+END
+GO
