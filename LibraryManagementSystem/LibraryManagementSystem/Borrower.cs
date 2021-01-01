@@ -280,23 +280,59 @@ namespace LibraryManagementSystem
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            string qry = "DELETE FROM Borrower WHERE BID='" + txt_BorrowerID.Text + "'";
-            SqlCommand cmd = new SqlCommand(qry, con);
+            string query = "SELECT * FROM Borrower where BID='" + txt_BorrowerID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
+
             try
             {
                 con.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Deleted Successfully");
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
+
+                if (DS.Rows.Count == 0)
+                {
+                    MessageBox.Show("This Borrower does not exist.");
+                }
+                else
+                {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spDeleteBooks", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@borrowerId", SqlDbType.VarChar).Value = txt_BorrowerID.Text;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record deleted Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                BorrowerGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generated " + ex);
+                MessageBox.Show("Error occured : " + ex);
             }
             finally
             {
                 con.Close();
-                BorrowerGridView.DataSource = null;
-                LoadAllCustomer();
             }
         }
 
