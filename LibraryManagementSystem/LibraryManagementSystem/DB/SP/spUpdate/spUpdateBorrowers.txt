@@ -26,4 +26,3 @@ BEGIN
 		[email]=@email
 	WHERE [BID]=@BID
 END
-GO

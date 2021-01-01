@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE spInsertBooks
 @ISBN INT,
 @title NVARCHAR(50),
-@author INT,
+@author  NVARCHAR(50),
 @copies INT,
 @subject  NVARCHAR(50)
 AS

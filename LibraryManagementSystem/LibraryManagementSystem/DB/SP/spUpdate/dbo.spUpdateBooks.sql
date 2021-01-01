@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE spUpdateBooks
 @ISBN INT,
 @title NVARCHAR(50),
-@authorId INT,
+@author NVARCHAR(50),
 @copies INT,
 @subject  NVARCHAR(50)
 
@@ -11,7 +11,7 @@ BEGIN
 	UPDATE dbo.Book
 	SET 
 	[Title] = @title, 
-	[Author] = @authorId, 
+	[Author] = @author, 
 	[Noofcopies] = @copies, 
 	[Subject] = @subject
 	WHERE [ISBN] = @ISBN;
