@@ -1,0 +1,23 @@
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spInsertAuthors
+@authorId NCHAR,
+@name NCHAR,
+@contact NCHAR,
+@email NCHAR
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO dbo.Author([AuthorID],[Name],[Contact],[Email])
+	VALUES (@authorId,@name,@contact,@email)
+END
