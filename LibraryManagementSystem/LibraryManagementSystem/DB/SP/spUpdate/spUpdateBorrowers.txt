@@ -1,0 +1,29 @@
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spUpdateBorrowers
+@BID NCHAR,
+@name NCHAR,
+@contact NCHAR,
+@address NCHAR,
+@email NCHAR
+AS
+BEGIN
+	SET NOCOUNT ON;
+	Update [dbo].[Borrower] 
+	SET 
+		[BID]=@BID,
+		[name]=@name,
+		[contact]=@contact,
+		[address]=@address,
+		[email]=@email
+	WHERE [BID]=@BID
+END
+GO
