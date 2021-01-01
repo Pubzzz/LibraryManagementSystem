@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE [dbo].[spCountAuthors]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT DISTINCT COUNT(AuthorID) FROM dbo.Author
+END

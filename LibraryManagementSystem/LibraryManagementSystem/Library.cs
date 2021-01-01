@@ -99,6 +99,73 @@ namespace LibraryManagementSystem
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+
+            string type = "Main";
+            if (radioButton2.Checked)
+            {
+                type = "Branch";
+            }
+
+            string query = "SELECT * FROM Library where LibID='" + txt_LibraryID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
+
+                if (DS.Rows.Count == 1)
+                {
+                    MessageBox.Show("This Library has already been registered");
+                }
+                else
+                {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spInsertLibrary", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@libraryId", SqlDbType.VarChar).Value = txt_LibraryID.Text;
+                            cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = txt_LibraryName.Text;
+                            cmd.Parameters.Add("@type", SqlDbType.VarChar).Value = type;
+                            cmd.Parameters.Add("@administrator", SqlDbType.VarChar).Value = txt_Admin.Text;
+                            cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = txt_ContactNo.Text;
+                            cmd.Parameters.Add("@address", SqlDbType.VarChar).Value = txt_Address.Text;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record added Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                LibraryGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured : " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            /*
             string type = "Main";
             if (radioButton2.Checked)
             {
@@ -149,28 +216,64 @@ namespace LibraryManagementSystem
             finally
             {
                 con.Close();
-            }
+            }*/
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            string qry = "DELETE FROM Library WHERE LibID='" + txt_LibraryID.Text + "'";
-            SqlCommand cmd = new SqlCommand(qry, con);
+            string query = "SELECT * FROM Library where LibID='" + txt_LibraryID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
+
             try
             {
                 con.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Deleted Successfully");
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
+
+                if (DS.Rows.Count == 0)
+                {
+                    MessageBox.Show("No record found.");
+                }
+                else
+                {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spDeleteLibrary", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@libraryId", SqlDbType.VarChar).Value = txt_LibraryID.Text;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record deleted Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                LibraryGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generated " + ex);
+                MessageBox.Show("Error occured : " + ex);
             }
             finally
             {
                 con.Close();
-                LibraryGridView.DataSource = null;
-                LoadAllCustomer();
             }
         }
 
@@ -206,73 +309,110 @@ namespace LibraryManagementSystem
         private void btn_Update_Click(object sender, EventArgs e)
         {
             string LName = "";
-            string type = "";
+            string type;
             string admin = "";
             string contact = "";
             string address = "";
 
+            string query = "SELECT * FROM Library where LibID='" + txt_LibraryID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
 
-            string qry = "UPDATE Library SET Name=@LName, Type=@type, Administrator=@admin,Contact=@contact,Address=@address Where LibID= @LID";
-            SqlCommand cmd = new SqlCommand(qry, con);
             try
             {
                 con.Open();
-                DataTable Dt = new DataTable();
-                LibraryGridView.DataSource = bindingSource1;
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
 
-                foreach (DataGridViewRow row in LibraryGridView.Rows)
+                if (DS.Rows.Count == 0)
                 {
-                    if (row.Cells[0].Value != null)
-                    {
-                        if (row.Cells[0].Value.ToString().Equals(txt_LibraryID.Text))
-                        {
-                            DataRow dr = Dt.NewRow();
-
-                            LName = row.Cells[1].Value.ToString();
-                            type = row.Cells[2].Value.ToString();
-                            admin = row.Cells[3].Value.ToString();
-                            contact = row.Cells[4].Value.ToString();
-                            address = row.Cells[5].Value.ToString();
-                            break;
-                        }
-                    }
-                }
-
-                if (txt_LibraryName.Text != null && txt_LibraryName.Text != String.Empty)
-                {
-                    LName = txt_LibraryName.Text;
-                }
-
-                if (radioButton1.Checked)
-                {
-                    type = "Main";
+                    MessageBox.Show("No record found.");
                 }
                 else
                 {
-                    type = "Branch";
-                }
-                if (txt_Admin.Text != null && txt_Admin.Text != String.Empty)
-                {
-                    admin = txt_Admin.Text;
-                }
+                    DataTable Dt = new DataTable();
+                    LibraryGridView.DataSource = bindingSource1;
 
-                if (txt_ContactNo.Text != null && txt_ContactNo.Text != String.Empty)
-                {
-                    contact = txt_ContactNo.Text;
-                }
-                if (txt_Address.Text != null && txt_Address.Text != String.Empty)
-                {
-                    address = txt_Address.Text;
-                }
-                cmd.Parameters.AddWithValue("@LName", LName);
-                cmd.Parameters.AddWithValue("@type", type);
-                cmd.Parameters.AddWithValue("@admin", admin);
-                cmd.Parameters.AddWithValue("@contact", contact);
-                cmd.Parameters.AddWithValue("@address", address);
-                cmd.Parameters.AddWithValue("@LID", txt_LibraryID.Text);
+                    foreach (DataGridViewRow row in LibraryGridView.Rows)
+                    {
+                        if (row.Cells[0].Value != null)
+                        {
+                            if (row.Cells[0].Value.ToString().Equals(txt_LibraryID.Text))
+                            {
+                                DataRow dr = Dt.NewRow();
 
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Updated Successfully");
+                                LName = row.Cells[1].Value.ToString();
+                                type = row.Cells[2].Value.ToString();
+                                admin = row.Cells[3].Value.ToString();
+                                contact = row.Cells[4].Value.ToString();
+                                address = row.Cells[5].Value.ToString();
+                                break;
+                            }
+                        }
+                    }
+
+                    if (radioButton1.Checked)
+                    {
+                        type = "Main";
+                    }
+                    else
+                    {
+                        type = "Branch";
+                    }
+
+                    if (txt_LibraryName.Text != null && txt_LibraryName.Text != String.Empty)
+                    {
+                        LName = txt_LibraryName.Text;
+                    }
+
+                    if (txt_Admin.Text != null && txt_Admin.Text != String.Empty)
+                    {
+                        admin = txt_Admin.Text;
+                    }
+                    if (txt_ContactNo.Text != null && txt_ContactNo.Text != String.Empty)
+                    {
+                        contact = txt_ContactNo.Text;
+                    }
+                    if (txt_Address.Text != null && txt_Address.Text != String.Empty)
+                    {
+                        address = txt_Address.Text;
+                    }
+
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spUpdateLibrary", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@libraryId", SqlDbType.VarChar).Value = txt_LibraryID.Text;
+                            cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = LName;
+                            cmd.Parameters.Add("@type", SqlDbType.VarChar).Value = type;
+                            cmd.Parameters.Add("@administrator", SqlDbType.VarChar).Value = admin;
+                            cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = contact;
+                            cmd.Parameters.Add("@address", SqlDbType.VarChar).Value = address;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record Updated Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                LibraryGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+
+                }
             }
             catch (Exception ex)
             {

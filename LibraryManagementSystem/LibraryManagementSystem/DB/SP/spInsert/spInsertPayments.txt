@@ -1,4 +1,4 @@
-USE [LibManagement]
+
 GO
 SET ANSI_NULLS ON
 GO
@@ -9,9 +9,15 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[spCountAuthors]
+CREATE PROCEDURE spInsertPayments
+@loanId INT,
+@borrowerID INT,
+@payment INT,
+@date DATE
+
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT COUNT(AuthorID) FROM dbo.Author
+	INSERT INTO dbo.Payment([LoanID],[BorrowerID],[Payment],[Date])
+	VALUES (@LId,@BID,@payment,@date)
 END

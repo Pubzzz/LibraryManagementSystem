@@ -9,21 +9,21 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE spUpdateCopies
-@copyId NCHAR,
-@Availability NCHAR,
-@pPrice NCHAR,
-@sPrice NCHAR,
-@isbn NCHAR
+@copyId INT,
+@Availability NCHAR(12),
+@pPrice INT,
+@sPrice INT,
+@isbn INT
 
 AS
 BEGIN
 	SET NOCOUNT ON;
 	UPDATE [dbo].[Copy]
 	SET 
-	[copyId] = @copyId, 
+	[ISBN] =  @ISBN, 
 	[Availability] = @Availability, 
-	[pPrice] = @pPrice, 
-	[sPrice] = @sPrice
-	WHERE [ISBN] = @ISBN;
+	[Pprice] = @pPrice, 
+	[Sprice] = @sPrice
+	WHERE CopyID = @copyId;
 END
-GO
+

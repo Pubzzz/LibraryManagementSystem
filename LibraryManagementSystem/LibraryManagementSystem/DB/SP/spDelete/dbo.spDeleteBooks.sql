@@ -1,0 +1,8 @@
+﻿CREATE PROCEDURE [dbo].[spDeleteBooks]
+@ISBN NCHAR
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE FROM dbo.Book
+	WHERE [ISBN] = @ISBN;
+END

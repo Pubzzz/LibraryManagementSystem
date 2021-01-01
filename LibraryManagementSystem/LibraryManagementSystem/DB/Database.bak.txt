@@ -81,7 +81,7 @@ CREATE TABLE [dbo].[Payment] (
 
 CREATE TABLE [dbo].[Loan] (
     [LoanID] NCHAR (10) NOT NULL,
-    [CopyID] NCHAR (10) NOT NULL,
+    [CopyID] INT NOT NULL,
     [BID]    NCHAR (10) NOT NULL,
     [LDate]  DATE       NULL,
     [RDate]  DATE       NULL, 
@@ -93,7 +93,7 @@ CREATE TABLE [dbo].[Loan] (
 CREATE TABLE [dbo].[Book] (
     [ISBN]         BIGINT     NOT NULL,
     [Title]        NCHAR (30) NOT NULL,
-    [AuthorID]       NCHAR (10) NOT NULL,
+    [AuthorID]       INT NOT NULL,
     [No.of.copies] NCHAR (10) NULL,
     [Subject]      NCHAR (10) NULL, 
     CONSTRAINT [PK_Book] PRIMARY KEY ([ISBN]),

@@ -116,30 +116,42 @@ namespace LibraryManagementSystem
                 }
                 else
                 {
-                    string qury = "INSERT INTO Author VALUES ('" + txt_AuthorID.Text + "','" + txt_AuthorName.Text + "','" + txt_ContactNo.Text + "','"+txt_Email.Text+"')";
-                    SqlCommand cmd = new SqlCommand(qury, con);
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spInsertAuthors", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
 
-                    try
-                    {
+                            cmd.Parameters.Add("@authorId", SqlDbType.VarChar).Value = txt_AuthorID.Text;
+                            cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = txt_AuthorName.Text;
+                            cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = txt_ContactNo.Text;
+                            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = txt_Email.Text;
 
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Record added Successfully");
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record added Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                AuthorGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occured : " + ex);
-                    }
-                    finally
-                    {
-                        con.Close();
-                        AuthorGridView.DataSource = null;
-                        LoadAllCustomer();
-                    }
+                    con.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generated : " + ex);
+                MessageBox.Show("Error occured : " + ex);
             }
             finally
             {
@@ -149,23 +161,60 @@ namespace LibraryManagementSystem
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            string qry = "DELETE FROM Author WHERE AuthorID='" + txt_AuthorID.Text + "'";
-            SqlCommand cmd = new SqlCommand(qry, con);
+            string query = "SELECT * FROM Author where AuthorID='" + txt_AuthorID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
+
             try
             {
                 con.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Deleted Successfully");
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
+
+                if (DS.Rows.Count == 0)
+                {
+                    MessageBox.Show("This Author ID does not exist.");
+                }
+                else
+                {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spDeleteAuthors", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@authorId", SqlDbType.VarChar).Value = txt_AuthorID.Text;
+                           
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record Deleted Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                AuthorGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generated " + ex);
+                MessageBox.Show("Error occured : " + ex);
             }
             finally
             {
                 con.Close();
-                AuthorGridView.DataSource = null;
-                LoadAllCustomer();
             }
         }
 
@@ -201,53 +250,89 @@ namespace LibraryManagementSystem
             string Contact = "";
             string Email = "";
 
+            string query = "SELECT * FROM Author where AuthorID='" + txt_AuthorID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
 
-            string qry = "UPDATE Author SET Name=@AName, Contact=@Contact, Email=@Email Where AuthorID= @AID";
-            SqlCommand cmd = new SqlCommand(qry, con);
             try
             {
                 con.Open();
-                DataTable Dt = new DataTable();
-                AuthorGridView.DataSource = bindingSource1;
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
 
-                foreach (DataGridViewRow row in AuthorGridView.Rows)
+                if (DS.Rows.Count == 0)
                 {
-                    if (row.Cells[0].Value != null)
-                    {
-                        if (row.Cells[0].Value.ToString().Equals(txt_AuthorID.Text))
-                        {
-                            DataRow dr = Dt.NewRow();
+                    MessageBox.Show("This Author ID does not exist.");
+                }
+                else
+                {
+                    DataTable Dt = new DataTable();
+                    AuthorGridView.DataSource = bindingSource1;
 
-                            AName = row.Cells[1].Value.ToString();
-                            Contact = row.Cells[2].Value.ToString();
-                            Email = row.Cells[3].Value.ToString();
-                            break;
+                    foreach (DataGridViewRow row in AuthorGridView.Rows)
+                    {
+                        if (row.Cells[0].Value != null)
+                        {
+                            if (row.Cells[0].Value.ToString().Equals(txt_AuthorID.Text))
+                            {
+                                DataRow dr = Dt.NewRow();
+
+                                AName = row.Cells[1].Value.ToString();
+                                Contact = row.Cells[2].Value.ToString();
+                                Email = row.Cells[3].Value.ToString();
+                                break;
+                            }
                         }
                     }
+
+                    if (txt_AuthorName.Text != null && txt_AuthorName.Text != String.Empty)
+                    {
+                        AName = txt_AuthorName.Text;
+                    }
+
+                    if (txt_ContactNo.Text != null && txt_ContactNo.Text != String.Empty)
+                    {
+                        Contact = txt_ContactNo.Text;
+                    }
+
+                    if (txt_Email.Text != null && txt_Email.Text != String.Empty)
+                    {
+                        Email = txt_Email.Text;
+                    }
+
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spUpdateAuthors", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@authorId", SqlDbType.VarChar).Value = txt_AuthorID.Text;
+                            cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = AName;
+                            cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = Contact;
+                            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = Email;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record Updated Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                AuthorGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+
                 }
-
-                if (txt_AuthorName.Text != null && txt_AuthorName.Text != String.Empty)
-                {
-                    AName = txt_AuthorName.Text;
-                }
-
-                if (txt_ContactNo.Text != null && txt_ContactNo.Text != String.Empty)
-                {
-                    Contact = txt_ContactNo.Text;
-                }
-
-                if (txt_Email.Text != null && txt_Email.Text != String.Empty)
-                {
-                    Email = txt_Email.Text;
-                }
-
-                cmd.Parameters.AddWithValue("@AName", AName);
-                cmd.Parameters.AddWithValue("@Contact", Contact);
-                cmd.Parameters.AddWithValue("@Email", Email);
-                cmd.Parameters.AddWithValue("@AID", txt_AuthorID.Text);
-
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Updated Successfully");
             }
             catch (Exception ex)
             {

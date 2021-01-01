@@ -25,4 +25,3 @@ BEGIN
 		[RDate]=@RDate
 	WHERE [LoanID]=@loanId
 END
-GO

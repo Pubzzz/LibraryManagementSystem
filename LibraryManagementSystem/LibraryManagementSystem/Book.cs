@@ -174,23 +174,59 @@ namespace LibraryManagementSystem
         private void btn_Delete_Click(object sender, EventArgs e)
         {
 
-            string qry = "DELETE FROM Book WHERE ISBN='" + txt_ISBN.Text + "'";
-            SqlCommand cmd = new SqlCommand(qry, con);
+            string query = "SELECT * FROM Book where ISBN='" + txt_ISBN.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
+
             try
             {
                 con.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Deleted Successfully");
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
+
+                if (DS.Rows.Count == 0)
+                {
+                    MessageBox.Show("This Book is not registered.");
+                }
+                else
+                {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spDeleteBooks", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@ISBN", SqlDbType.VarChar).Value = txt_ISBN.Text;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record deleted Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                BookGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generated " + ex);
+                MessageBox.Show("Error occured : " + ex);
             }
             finally
             {
                 con.Close();
-                BookGridView.DataSource = null;
-                LoadAllCustomer();
             }
         }
 
@@ -212,65 +248,100 @@ namespace LibraryManagementSystem
 
         private void btn_Update_Click(object sender, EventArgs e)
         {
-
             string Title = "";
             string Author = "";
             string Copies = "";
             string Sub = "";
 
+            string query = "SELECT * FROM Book where ISBN='" + txt_ISBN.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
 
-            string qry = "UPDATE Book SET Title=@Title, Author=@Author, Noofcopies=@Copies,Subject=@Sub Where ISBN= @ID";
-            SqlCommand cmd = new SqlCommand(qry, con);
             try
             {
                 con.Open();
-                DataTable Dt = new DataTable();
-                BookGridView.DataSource = bindingSource1;
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
 
-                foreach (DataGridViewRow row in BookGridView.Rows)
+                if (DS.Rows.Count == 0)
                 {
-                    if (row.Cells[0].Value != null)
-                    {
-                        if (row.Cells[0].Value.ToString().Equals(txt_ISBN.Text))
-                        {
-                            DataRow dr = Dt.NewRow();
+                    MessageBox.Show("This Author ID does not exist.");
+                }
+                else
+                {
+                    DataTable Dt = new DataTable();
+                    BookGridView.DataSource = bindingSource1;
 
-                            Title = row.Cells[1].Value.ToString();
-                            Author = row.Cells[2].Value.ToString();
-                            Copies = row.Cells[3].Value.ToString();
-                            Sub = row.Cells[4].Value.ToString();
-                            break;
+                    foreach (DataGridViewRow row in BookGridView.Rows)
+                    {
+                        if (row.Cells[0].Value != null)
+                        {
+                            if (row.Cells[0].Value.ToString().Equals(txt_ISBN.Text))
+                            {
+                                DataRow dr = Dt.NewRow();
+
+                                Title = row.Cells[1].Value.ToString();
+                                Author = row.Cells[2].Value.ToString();
+                                Copies = row.Cells[3].Value.ToString();
+                                Sub = row.Cells[4].Value.ToString();
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (txt_Title.Text != null && txt_Title.Text != String.Empty)
-                {
-                    Title = txt_Title.Text;
-                }
+                    if (txt_Title.Text != null && txt_Title.Text != String.Empty)
+                    {
+                        Title = txt_Title.Text;
+                    }
 
-                if (txt_Author.Text != null && txt_Author.Text != String.Empty)
-                {
-                    Author = txt_Author.Text;
-                }
+                    if (txt_Author.Text != null && txt_Author.Text != String.Empty)
+                    {
+                        Author = txt_Author.Text;
+                    }
 
-                if (txt_NoCopies.Text != null && txt_NoCopies.Text != String.Empty)
-                {
-                    Copies = txt_NoCopies.Text;
-                }
-                if (txt_Subject.Text != null && txt_Subject.Text != String.Empty)
-                {
-                    Sub = txt_Subject.Text;
-                }
+                    if (txt_NoCopies.Text != null && txt_NoCopies.Text != String.Empty)
+                    {
+                        Copies = txt_NoCopies.Text;
+                    }
+                    if (txt_Subject.Text != null && txt_Subject.Text != String.Empty)
+                    {
+                        Sub = txt_Subject.Text;
+                    }
 
-                cmd.Parameters.AddWithValue("@Title", Title);
-                cmd.Parameters.AddWithValue("@Author", Author);
-                cmd.Parameters.AddWithValue("@Copies", Copies);
-                cmd.Parameters.AddWithValue("@Sub", Sub);
-                cmd.Parameters.AddWithValue("@ID", txt_ISBN.Text);
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spUpdateBooks", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Updated Successfully");
+                            cmd.Parameters.Add("@ISBN", SqlDbType.VarChar).Value = txt_ISBN.Text;
+                            cmd.Parameters.Add("@title", SqlDbType.VarChar).Value = Title;
+                            cmd.Parameters.Add("@author", SqlDbType.VarChar).Value = Author;
+                            cmd.Parameters.Add("@copies", SqlDbType.VarChar).Value = Copies;
+                            cmd.Parameters.Add("@subject", SqlDbType.VarChar).Value = Sub;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record Updated Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                BookGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+
+                }
             }
             catch (Exception ex)
             {
