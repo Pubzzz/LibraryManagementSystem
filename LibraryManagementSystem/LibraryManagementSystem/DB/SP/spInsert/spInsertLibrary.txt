@@ -1,0 +1,24 @@
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spInsertLibrary
+@libraryId NCHAR,
+@name NCHAR,
+@type NCHAR,
+@administrator NCHAR,
+@contact NCHAR,
+@address NCHAR
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO dbo.Library([LibID],[Name],[Type],[Administrator],[Contact],[Address])
+	VALUES(@libraryId,@name,@type,@administrator,@contact,@address)
+END
