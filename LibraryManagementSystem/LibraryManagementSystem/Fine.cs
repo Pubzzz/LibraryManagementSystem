@@ -30,7 +30,7 @@ namespace LibraryManagementSystem
                 bindingSource1.DataSource = null;
 
                 con.Open();
-                string qry = "Select * from Payment WHERE LoanID=  '" + txt_LID.Text + "' AND BorrowerID= '" + txt_BID.Text + "'";
+                string qry = "Select * from Payment ";
                
                 DA = new SqlDataAdapter(qry, con);
 
