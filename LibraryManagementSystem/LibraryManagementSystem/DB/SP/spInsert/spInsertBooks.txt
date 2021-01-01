@@ -1,0 +1,24 @@
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spInsertBooks
+@ISBN BIGINT,
+@title NCHAR,
+@authorId NCHAR,
+@copies NCHAR,
+@subject NCHAR
+AS
+BEGIN
+   
+	INSERT INTO dbo.Book([ISBN],[Title], [AuthorID], [No.of.copies], [Subject])
+	VALUES (@ISBN, @title, @authorId, @copies,@subject)
+
+END 
