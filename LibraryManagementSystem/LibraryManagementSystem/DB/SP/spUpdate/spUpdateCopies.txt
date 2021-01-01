@@ -1,0 +1,29 @@
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spUpdateCopies
+@copyId NCHAR,
+@Availability NCHAR,
+@pPrice NCHAR,
+@sPrice NCHAR,
+@isbn NCHAR
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+	UPDATE [dbo].[Copy]
+	SET 
+	[copyId] = @copyId, 
+	[Availability] = @Availability, 
+	[pPrice] = @pPrice, 
+	[sPrice] = @sPrice
+	WHERE [ISBN] = @ISBN;
+END
+GO
