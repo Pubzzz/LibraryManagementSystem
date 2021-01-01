@@ -1,0 +1,24 @@
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spInsertBorrowers
+@BID NCHAR,
+@name NCHAR,
+@contact NCHAR,
+@address NCHAR,
+@email NCHAR
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO dbo.Borrower([BID],[Name],[Contact],[Address],[Email])
+	VALUES (@BID,@name,@contact,@address,@email);
+END
