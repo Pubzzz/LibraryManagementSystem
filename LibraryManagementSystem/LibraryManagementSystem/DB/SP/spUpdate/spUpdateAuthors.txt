@@ -1,0 +1,28 @@
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spUpdateAuthors
+@authorId NCHAR,
+@name NCHAR,
+@contact NCHAR,
+@email NCHAR
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+	UPDATE dbo.Author 
+	SET
+	[AuthorID] = @authorId,
+	[Name] = @name,
+	[Contact] = @contact,
+	[Email] = @email
+	WHERE [AuthorID] = @authorId
+END
+GO
