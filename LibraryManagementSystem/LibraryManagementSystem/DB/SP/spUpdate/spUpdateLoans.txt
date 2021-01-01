@@ -1,0 +1,28 @@
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spUpdateLoans
+@loanId NCHAR,
+@copyId NCHAR,
+@BID NCHAR,
+@LDate DATE,
+@RDate DATE
+AS
+BEGIN
+	SET NOCOUNT ON;
+	Update dbo.Loan
+	SET 
+		[CopyID]=@copyId,
+		[BID]=@BID,
+		[LDate]=@LDate,
+		[RDate]=@RDate
+	WHERE [LoanID]=@loanId
+END
+GO
