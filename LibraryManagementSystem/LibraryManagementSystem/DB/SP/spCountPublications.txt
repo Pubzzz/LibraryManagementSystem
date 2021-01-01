@@ -1,0 +1,23 @@
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[spCountPublications]    Script Date: 1/1/2021 8:36:03 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spCountPublications]
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT COUNT(ISBN) FROM [dbo].[Book]
+END
+GO
