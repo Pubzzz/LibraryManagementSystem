@@ -1,0 +1,23 @@
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spInsertPayments
+@loanId INT,
+@borrowerID INT,
+@payment INT,
+@date DATE
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO dbo.Payment([LoanID],[BorrowerID],[Payment],[Date])
+	VALUES (@LId,@BID,@payment,@date)
+END
