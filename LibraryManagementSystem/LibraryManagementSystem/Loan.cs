@@ -21,7 +21,7 @@ namespace LibraryManagementSystem
         {
             InitializeComponent();
             LoadAllCustomer();
-            CheckOverdue();
+            
         }
         private void LoadAllCustomer()
         {
@@ -173,59 +173,94 @@ namespace LibraryManagementSystem
             string Ldate = "";
             string Rdate = "";
 
+            string query = "SELECT * FROM Loan where LoanID='" + txt_LoanID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
 
-            string qry = "UPDATE Loan SET CopyID=@CID, BID=@BID, LDate=@Ldate,RDate=@Rdate Where LoanID= @LID";
-            SqlCommand cmd = new SqlCommand(qry, con);
             try
             {
                 con.Open();
-                DataTable Dt = new DataTable();
-                LoanGridView.DataSource = bindingSource1;
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
 
-                foreach (DataGridViewRow row in LoanGridView.Rows)
+                if (DS.Rows.Count == 0)
                 {
-                    if (row.Cells[0].Value != null)
-                    {
-                        if (row.Cells[0].Value.ToString().Equals(txt_LoanID.Text))
-                        {
-                            DataRow dr = Dt.NewRow();
+                    MessageBox.Show("No record found.");
+                }
+                else
+                {
+                    DataTable Dt = new DataTable();
+                    LoanGridView.DataSource = bindingSource1;
 
-                            CID = row.Cells[1].Value.ToString();
-                            BID = row.Cells[2].Value.ToString();
-                            Ldate = row.Cells[3].Value.ToString();
-                            Rdate = row.Cells[4].Value.ToString();
-                            break;
+                    foreach (DataGridViewRow row in LoanGridView.Rows)
+                    {
+                        if (row.Cells[0].Value != null)
+                        {
+                            if (row.Cells[0].Value.ToString().Equals(txt_LoanID.Text))
+                            {
+                                DataRow dr = Dt.NewRow();
+
+                                CID = row.Cells[1].Value.ToString();
+                                BID = row.Cells[2].Value.ToString();
+                                Ldate = row.Cells[3].Value.ToString();
+                                Rdate = row.Cells[4].Value.ToString();
+                                break;
+                            }
                         }
                     }
-                }
+                    if (txt_CopyID.Text != null && txt_CopyID.Text != String.Empty)
+                    {
+                        CID = txt_CopyID.Text;
+                    }
 
-                if (txt_CopyID.Text != null && txt_CopyID.Text != String.Empty)
-                {
-                    CID = txt_CopyID.Text;
-                }
+                    if (txt_BorrowerID.Text != null && txt_BorrowerID.Text != String.Empty)
+                    {
+                        BID = txt_BorrowerID.Text;
+                    }
 
-                if (txt_BorrowerID.Text != null && txt_BorrowerID.Text != String.Empty)
-                {
-                    BID = txt_BorrowerID.Text;
-                }
+                    if (txt_LendingDate.Text != null && txt_LendingDate.Text != String.Empty)
+                    {
+                        Ldate = txt_LendingDate.Text;
+                    }
+                    if (txt_ReturnedDate.Text != null && txt_ReturnedDate.Text != String.Empty)
+                    {
+                        Rdate = txt_ReturnedDate.Text;
+                    }
 
-                if (txt_LendingDate.Text != null && txt_LendingDate.Text != String.Empty)
-                {
-                    Ldate = txt_LendingDate.Text;
-                }
-                if (txt_ReturnedDate.Text != null && txt_ReturnedDate.Text != String.Empty)
-                {
-                    Rdate = txt_ReturnedDate.Text;
-                }
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spUpdateLoans", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@CID", CID);
-                cmd.Parameters.AddWithValue("@BID", BID);
-                cmd.Parameters.AddWithValue("@Ldate", Ldate);
-                cmd.Parameters.AddWithValue("@Rdate", Rdate);
-                cmd.Parameters.AddWithValue("@LID", txt_LoanID.Text);
+                            cmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value = txt_LoanID.Text;
+                            cmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = CID;
+                            cmd.Parameters.Add("@BID", SqlDbType.VarChar).Value = BID;
+                            cmd.Parameters.Add("@LDate", SqlDbType.VarChar).Value = Ldate;
+                            cmd.Parameters.Add("@RDate", SqlDbType.VarChar).Value = Rdate;
 
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Updated Successfully");
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record Updated Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                LoanGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+
+                }
             }
             catch (Exception ex)
             {
@@ -237,6 +272,7 @@ namespace LibraryManagementSystem
                 LoanGridView.DataSource = null;
                 LoadAllCustomer();
             }
+            
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -352,7 +388,7 @@ namespace LibraryManagementSystem
         {
             Loan one = new Loan();
             this.Hide();
-            one.Show(); 
+            one.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -383,6 +419,7 @@ namespace LibraryManagementSystem
             Fine one = new Fine();
             one.Show();
         }
+        /*
         private void CheckOverdue()
         {
             string Today= DateTime.Now.ToString("dd MMMM, yyyy");
@@ -426,7 +463,7 @@ namespace LibraryManagementSystem
                     /*
                     NoOfDays = (DateTime.Now - DateTime.Rdate).TotalDays.ToString();
                     PaymentDue = (15.00 * NoOfDays).ToString;
-                    */
+                    
             string qury = "INSERT INTO Overdue VALUES ('" + LID + "','" + BID + "','" +NoOfDays+ "','" +PaymentDue+ "')";
                     SqlCommand cmd = new SqlCommand(qury, con);
 
@@ -456,7 +493,9 @@ namespace LibraryManagementSystem
                 con.Close();
                 LoadAllCustomer();
             }
+        
 
-        }
+    }*/
+
     }
 }

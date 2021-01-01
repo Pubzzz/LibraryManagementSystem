@@ -279,69 +279,104 @@ namespace LibraryManagementSystem
 
         private void btn_Update_Click(object sender, EventArgs e)
         {
-
             string Avail = "";
             string Pp = "";
             string Sp = "";
             string Isbn = "";
 
+            string query = "SELECT * FROM Copy where CopyID='" + txt_CopyID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
 
-            string qry = "UPDATE Copy SET Availability=@Avail, Pprice=@pp, Sprice=@sp,ISBN=@isbn Where CopyID= @ID";
-            SqlCommand cmd = new SqlCommand(qry, con);
             try
             {
                 con.Open();
-                DataTable Dt = new DataTable();
-                CopyGridView.DataSource = bindingSource1;
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
 
-                foreach (DataGridViewRow row in CopyGridView.Rows)
+                if (DS.Rows.Count == 0)
                 {
-                    if (row.Cells[0].Value != null)
-                    {
-                        if (row.Cells[0].Value.ToString().Equals(txt_CopyID.Text))
-                        {
-                            DataRow dr = Dt.NewRow();
-
-                            Avail = row.Cells[1].Value.ToString();
-                            Pp = row.Cells[2].Value.ToString();
-                            Sp = row.Cells[3].Value.ToString();
-                            Isbn = row.Cells[4].Value.ToString();
-                            break;
-                        }
-                    }
-                }
-
-                if (yes.Checked)
-                {
-                    Avail = "Available";
+                    MessageBox.Show("No record found.");
                 }
                 else
                 {
-                    Avail = "Not Available";
-                }
+                    DataTable Dt = new DataTable();
+                    CopyGridView.DataSource = bindingSource1;
 
-                if (txt_PurchasePrice.Text != null && txt_PurchasePrice.Text != String.Empty)
-                {
-                    Pp = txt_PurchasePrice.Text;
-                }
+                    foreach (DataGridViewRow row in CopyGridView.Rows)
+                    {
+                        if (row.Cells[0].Value != null)
+                        {
+                            if (row.Cells[0].Value.ToString().Equals(txt_CopyID.Text))
+                            {
+                                DataRow dr = Dt.NewRow();
 
-                if (txt_SellingPrice.Text != null && txt_SellingPrice.Text != String.Empty)
-                {
-                    Sp = txt_SellingPrice.Text;
-                }
-                if (txt_ISBN.Text != null && txt_ISBN.Text != String.Empty)
-                {
-                    Isbn = txt_ISBN.Text;
-                }
+                                Avail = row.Cells[1].Value.ToString();
+                                Pp = row.Cells[2].Value.ToString();
+                                Sp = row.Cells[3].Value.ToString();
+                                Isbn = row.Cells[4].Value.ToString();
+                                break;
+                            }
+                        }
+                    }
 
-                cmd.Parameters.AddWithValue("@Avail", Avail);
-                cmd.Parameters.AddWithValue("@pp", Pp);
-                cmd.Parameters.AddWithValue("@sp", Sp);
-                cmd.Parameters.AddWithValue("@isbn", Isbn);
-                cmd.Parameters.AddWithValue("@ID", txt_CopyID.Text);
+                    if (yes.Checked)
+                    {
+                        Avail = "Available";
+                    }
+                    else
+                    {
+                        Avail = "Not Available";
+                    }
 
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record Updated Successfully");
+                    if (txt_PurchasePrice.Text != null && txt_PurchasePrice.Text != String.Empty)
+                    {
+                        Pp = txt_PurchasePrice.Text;
+                    }
+
+                    if (txt_SellingPrice.Text != null && txt_SellingPrice.Text != String.Empty)
+                    {
+                        Sp = txt_SellingPrice.Text;
+                    }
+                    if (txt_ISBN.Text != null && txt_ISBN.Text != String.Empty)
+                    {
+                        Isbn = txt_ISBN.Text;
+                    }
+
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spUpdateCopies", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = txt_CopyID.Text;
+                            cmd.Parameters.Add("@Availability", SqlDbType.VarChar).Value = Avail;
+                            cmd.Parameters.Add("@pPrice", SqlDbType.VarChar).Value = Pp;
+                            cmd.Parameters.Add("@sPrice", SqlDbType.VarChar).Value = Sp;
+                            cmd.Parameters.Add("@isbn", SqlDbType.VarChar).Value = Isbn;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record Updated Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                CopyGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+
+                }
             }
             catch (Exception ex)
             {

@@ -27,4 +27,3 @@ BEGIN
 	[administrator] = @administrator
 	WHERE [LibId] = @libraryId;
 END
-GO
