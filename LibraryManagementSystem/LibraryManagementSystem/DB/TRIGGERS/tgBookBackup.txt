@@ -1,0 +1,14 @@
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TRIGGER [dbo].[tgBookBackup]
+ON [dbo].[Book]
+AFTER DELETE
+AS 
+
+    INSERT INTO [dbo].[BookBackup]
+    SELECT *
+    FROM DELETED
