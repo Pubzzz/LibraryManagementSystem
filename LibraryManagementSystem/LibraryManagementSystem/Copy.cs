@@ -100,6 +100,7 @@ namespace LibraryManagementSystem
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+
             string Avail = "Available";
             if (no.Checked)
             {
@@ -114,9 +115,10 @@ namespace LibraryManagementSystem
                 DataTable DS = new DataTable();
                 DA.Fill(DS);
 
-                if (DS.Rows.Count == 0)
+                while(DS.Rows.Count == 0)
                 {
                     MessageBox.Show("This is not a registered book at the library");
+                    break;
                 }
             }
             catch (Exception ex)
@@ -128,51 +130,65 @@ namespace LibraryManagementSystem
                 con.Close();
                 LoadAllCustomer();
             }
-                
+
             string query = "SELECT * FROM Copy where CopyID='" + txt_CopyID.Text + "' ";
-             SqlCommand comd = new SqlCommand(query, con);
+            SqlCommand comd = new SqlCommand(query, con);
 
-                try
+            try
+            {
+                con.Open();
+                SqlDataAdapter DoA = new SqlDataAdapter(comd);
+                DataTable DoS = new DataTable();
+                DoA.Fill(DoS);
+
+                if (DoS.Rows.Count == 1)
                 {
-                    con.Open();
-                    SqlDataAdapter DoA = new SqlDataAdapter(comd);
-                    DataTable DoS = new DataTable();
-                    DoA.Fill(DoS);
-
-                    if (DoS.Rows.Count == 1)
-                    {
-                        MessageBox.Show("This CopyID is taken ");
-                    }
-                    else
-                    {
-                    string qury = "INSERT INTO Copy VALUES ('" + txt_CopyID.Text + "','" + Avail + "','" + txt_PurchasePrice.Text + "','" + txt_SellingPrice.Text + "','" + txt_ISBN.Text + "')";
-                        SqlCommand commd = new SqlCommand(qury, con);
-
-                        try
-                        {
-                            commd.ExecuteNonQuery();
-                            MessageBox.Show("Record added Successfully");
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error occured : " + ex);
-                        }
-                        finally
-                        {
-                            con.Close();
-                            CopyGridView.DataSource = null;
-                            LoadAllCustomer();
-                        }
-                    }
+                    MessageBox.Show("This CopyID is taken ");
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Error generated : " + ex);
-                }
-                finally
-                {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmmd = new SqlCommand("spInsertCopies", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = txt_CopyID.Text;
+                            cmd.Parameters.Add("@Availability", SqlDbType.VarChar).Value = Avail;
+                            cmd.Parameters.Add("@pPrice", SqlDbType.VarChar).Value = txt_PurchasePrice.Text;
+                            cmd.Parameters.Add("@sPrice", SqlDbType.VarChar).Value = txt_SellingPrice.Text;
+                            cmd.Parameters.Add("@isbn", SqlDbType.VarChar).Value = txt_ISBN.Text;
+
+                            try
+                            {
+                                conn.Open();
+                                cmmd.ExecuteNonQuery();
+                                MessageBox.Show("Record added Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                CopyGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
                     con.Close();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured : " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         private void btn_Search_Click(object sender, EventArgs e)

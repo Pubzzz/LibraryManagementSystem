@@ -99,6 +99,73 @@ namespace LibraryManagementSystem
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+
+            string type = "Main";
+            if (radioButton2.Checked)
+            {
+                type = "Branch";
+            }
+
+            string query = "SELECT * FROM Library where LibID='" + txt_LibraryID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
+
+                if (DS.Rows.Count == 1)
+                {
+                    MessageBox.Show("This Library has already been registered");
+                }
+                else
+                {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spInsertLibrary", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@libraryId", SqlDbType.VarChar).Value = txt_LibraryID.Text;
+                            cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = txt_LibraryName.Text;
+                            cmd.Parameters.Add("@type", SqlDbType.VarChar).Value = type;
+                            cmd.Parameters.Add("@administrator", SqlDbType.VarChar).Value = txt_Admin.Text;
+                            cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = txt_ContactNo.Text;
+                            cmd.Parameters.Add("@address", SqlDbType.VarChar).Value = txt_Address.Text;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record added Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                LibraryGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured : " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            /*
             string type = "Main";
             if (radioButton2.Checked)
             {
@@ -149,7 +216,7 @@ namespace LibraryManagementSystem
             finally
             {
                 con.Close();
-            }
+            }*/
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)

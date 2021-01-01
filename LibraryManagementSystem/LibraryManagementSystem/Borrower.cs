@@ -116,6 +116,64 @@ namespace LibraryManagementSystem
                 }
                 else
                 {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spInsertBorrowers", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@BID", SqlDbType.VarChar).Value = txt_BorrowerID.Text;
+                            cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = txt_Name.Text;
+                            cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = txt_ContactNo.Text;
+                            cmd.Parameters.Add("@address", SqlDbType.VarChar).Value = txt_Address.Text;
+                            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = txt_Email.Text;
+
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record added Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                BorrowerGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured : " + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            /*string query = "SELECT * FROM Borrower where BID='" + txt_BorrowerID.Text + "' ";
+            SqlCommand comd = new SqlCommand(query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
+
+                if (DS.Rows.Count == 1)
+                {
+                    MessageBox.Show("This Borrower already exists ");
+                }
+                else
+                {
                     string qury = "INSERT INTO Borrower VALUES ('" + txt_BorrowerID.Text + "','" + txt_Name.Text + "','" + txt_ContactNo.Text + "','" + txt_Address.Text + "','" + txt_Email.Text + "')";
                     SqlCommand cmd = new SqlCommand(qury, con);
 
@@ -144,7 +202,7 @@ namespace LibraryManagementSystem
             finally
             {
                 con.Close();
-            }
+            }*/
         }
 
         private void btn_Update_Click(object sender, EventArgs e)

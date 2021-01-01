@@ -51,10 +51,9 @@ namespace LibraryManagementSystem
         }
         private void btn_Add_Click(object sender, EventArgs e)
         {
+
             txt_LendingDate.Text = DateTime.Now.ToString("dd MMMM, yyyy");
             txt_ReturnedDate.Text = DateTime.Now.AddDays(14).ToString("dd MMMM, yyyy");
-
-            //CHECK WHETHER THE BID,CID AND LOAN ID ARE VALID EXCEPTIONS 
 
             string qry = "SELECT * FROM Borrower where BID='" + txt_BorrowerID.Text + "' ";
             SqlCommand comd = new SqlCommand(qry, con);
@@ -65,9 +64,10 @@ namespace LibraryManagementSystem
                 DataTable DS = new DataTable();
                 DA.Fill(DS);
 
-                if (DS.Rows.Count == 0)
+                while (DS.Rows.Count == 0)
                 {
                     MessageBox.Show("This borrower is not a registered user");
+                    break;
                 }
             }
             catch (Exception ex)
@@ -89,9 +89,10 @@ namespace LibraryManagementSystem
                 DataTable DS = new DataTable();
                 DA.Fill(DS);
 
-                if (DS.Rows.Count == 0)
+                while (DS.Rows.Count == 0)
                 {
                     MessageBox.Show("This CopyID does not exist");
+                    break;
                 }
             }
             catch (Exception ex)
@@ -119,24 +120,41 @@ namespace LibraryManagementSystem
                 {
                     MessageBox.Show("This Loan ID is already used");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error generated : " + ex);
-            }
-            finally
-            {
-                con.Close();
-            }
+                else
+                {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("spInsertLoans", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
 
-            string qury = "INSERT INTO Loan VALUES ('" + txt_LoanID.Text + "','" + txt_CopyID.Text + "','" + txt_BorrowerID.Text + "','" + txt_LendingDate.Text + "','" + txt_ReturnedDate.Text + "')";
-            SqlCommand cmd = new SqlCommand(qury, con);
+                            cmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value = txt_LoanID.Text;
+                            cmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = txt_CopyID.Text;
+                            cmd.Parameters.Add("@BID", SqlDbType.VarChar).Value = txt_BorrowerID.Text;
+                            cmd.Parameters.Add("@LDate", SqlDbType.VarChar).Value = txt_LendingDate.Text;
+                            cmd.Parameters.Add("@RDate", SqlDbType.VarChar).Value = txt_ReturnedDate.Text;
 
-            try
-            {
-                con.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Record added Successfully");
+                            try
+                            {
+                                conn.Open();
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Record added Successfully");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error occured : " + ex);
+                            }
+                            finally
+                            {
+                                conn.Close();
+                                con.Close();
+                                LoanGridView.DataSource = null;
+                                LoadAllCustomer();
+                            }
+                        }
+                    }
+                    con.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -145,8 +163,6 @@ namespace LibraryManagementSystem
             finally
             {
                 con.Close();
-                LoanGridView.DataSource = null;
-                LoadAllCustomer();
             }
         }
 
@@ -375,7 +391,7 @@ namespace LibraryManagementSystem
                     NoOfDays = (DateTime.Now - DateTime.Rdate).TotalDays.ToString();
                     PaymentDue = (15.00 * NoOfDays).ToString;
                     */
-                    string qury = "INSERT INTO Overdue VALUES ('" + LID + "','" + BID + "','" +NoOfDays+ "','" +PaymentDue+ "')";
+            string qury = "INSERT INTO Overdue VALUES ('" + LID + "','" + BID + "','" +NoOfDays+ "','" +PaymentDue+ "')";
                     SqlCommand cmd = new SqlCommand(qury, con);
 
                     try
