@@ -25,3 +25,4 @@ BEGIN
 	[Email] = @email
 	WHERE [AuthorID] = @authorId
 END
+GO
