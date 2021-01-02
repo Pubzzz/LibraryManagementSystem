@@ -1,0 +1,33 @@
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spProcessOverDue]
+@loanId NCHAR
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DECLARE 
+	@isOverDue BIT,
+	@borrowerId NCHAR,
+	@days INT,
+	@paymentDue INT,
+	@isRecordExist INT
+
+	SET @isOverDue = (SELECT dbo.FuncCheckOverDue(@loanId));
+	SET @borrowerId = (SELECT BID from dbo.notReturnedBooks WHERE LoanID = @loanId);
+	SET @days = DATEDIFF(DAY,(SELECT RDate from dbo.notReturnedBooks WHERE LoanID = @loanId),GETDATE());
+	SET @paymentDue = (SELECT  dbo.FunCalculateOverDue((SELECT RDate from dbo.notReturnedBooks WHERE LoanID = @loanId),15));
+	SET @isRecordExist = (SELECT COUNT(LoanID) from dbo.OverDue WHERE LoanID = @loanId);
+
+	IF @isOverDue = 1 AND @isRecordExist = 0
+	INSERT INTO [dbo].[Overdue]
+	VALUES (@loanId,@borrowerId,@days,@paymentDue);
+
+END
