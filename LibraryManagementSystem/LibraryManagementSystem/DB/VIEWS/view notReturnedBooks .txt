@@ -1,0 +1,8 @@
+CREATE VIEW notReturnedBooks AS
+SELECT l.* , br.Name AS BorrowerName, bk.Title AS BookTitle, bk.AuthorID, ar.Name AS AuthorName 
+FROM Loan l
+INNER JOIN Borrower br ON l.BID = br.BID
+INNER JOIN Copy cp ON l.CopyID = cp.CopyID
+INNER JOIN Book bk ON cp.ISBN = bk.ISBN
+INNER JOIN Author ar ON bk.AuthorID = ar.AuthorID 
+WHERE CONVERT(DATE, l.RDate)  < CONVERT (DATE,GETDATE());
