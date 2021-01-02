@@ -115,10 +115,10 @@ namespace LibraryManagementSystem
                 DataTable DS = new DataTable();
                 DA.Fill(DS);
 
-                while(DS.Rows.Count == 0)
+                if(DS.Rows.Count == 0)
                 {
                     MessageBox.Show("This is not a registered book at the library");
-                    break;
+                   
                 }
             }
             catch (Exception ex)

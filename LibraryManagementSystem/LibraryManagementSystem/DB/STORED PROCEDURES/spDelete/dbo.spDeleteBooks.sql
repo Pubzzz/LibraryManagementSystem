@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[spDeleteBooks]
-@ISBN NCHAR
+@ISBN INT
 AS
 BEGIN
 	SET NOCOUNT ON;

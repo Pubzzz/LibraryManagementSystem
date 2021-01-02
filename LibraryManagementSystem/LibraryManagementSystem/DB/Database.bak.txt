@@ -76,8 +76,6 @@ CREATE TABLE [dbo].[Payment] (
     PRIMARY KEY CLUSTERED ([LoanID] ASC)
 );
 
-*********NEW**************
-
 
 CREATE TABLE [dbo].[Loan] (
     [LoanID] NCHAR (10) NOT NULL,
