@@ -119,4 +119,10 @@ CREATE TABLE [dbo].[BorrowerBackup](
     CONSTRAINT [PK_BorrowerBackup] PRIMARY KEY ([BID])
 );
 
-
+CREATE TABLE [dbo].[AuthorBackup](
+	[AuthorID] [nchar](10) NOT NULL,
+	[Name] [nchar](60) NULL,
+	[Contact] [nchar](10) NULL,
+	[Email] [nchar](30) NULL,
+ CONSTRAINT [PK_AuthorBackup] PRIMARY KEY  ([AuthorID])
+);
