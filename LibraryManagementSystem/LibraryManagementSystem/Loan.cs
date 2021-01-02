@@ -419,9 +419,31 @@ namespace LibraryManagementSystem
             Fine one = new Fine();
             one.Show();
         }
-        /*
+        
         private void CheckOverdue()
         {
+            using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+            {
+                using (SqlCommand cmd = new SqlCommand("FuncCheckOverDue", conn))
+                {
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occured : " + ex);
+                    }
+                    finally
+                    {
+                        conn.Close();
+                        con.Close();
+                    }
+                }
+            }
+            con.Close();
+            /*
             string Today= DateTime.Now.ToString("dd MMMM, yyyy");
             string qry = "SELECT * FROM Loan where RDate GREATER THAN (SELECT DATEADD(day, 14, LDate) AS DateAdd;) ";
             SqlCommand comd = new SqlCommand(qry, con);
@@ -497,5 +519,5 @@ namespace LibraryManagementSystem
 
     }*/
 
+        }
     }
-}
