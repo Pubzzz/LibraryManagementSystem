@@ -100,6 +100,9 @@ namespace LibraryManagementSystem
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            System.Random rand = new System.Random((int)System.DateTime.Now.Ticks);
+            int random = rand.Next(1, 1000);
+
             string query = "SELECT * FROM Borrower where BID='" + txt_BorrowerID.Text + "' ";
             SqlCommand comd = new SqlCommand(query, con);
 
@@ -122,7 +125,7 @@ namespace LibraryManagementSystem
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
 
-                            cmd.Parameters.Add("@BID", SqlDbType.VarChar).Value = txt_BorrowerID.Text;
+                            cmd.Parameters.Add("@BID", SqlDbType.VarChar).Value = random;
                             cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = txt_Name.Text;
                             cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = txt_ContactNo.Text;
                             cmd.Parameters.Add("@address", SqlDbType.VarChar).Value = txt_Address.Text;

@@ -55,13 +55,16 @@ namespace LibraryManagementSystem
 
         private void btn_pay_Click(object sender, EventArgs e)
         {
+            System.Random rand = new System.Random((int)System.DateTime.Now.Ticks);
+            int random = rand.Next(1, 1000000);
+
             using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
             {
                 using (SqlCommand cmd = new SqlCommand("spInsertPayment", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@LoanId", SqlDbType.VarChar).Value = txt_LID.Text;
+                    cmd.Parameters.Add("@LoanId", SqlDbType.VarChar).Value = random;
                     cmd.Parameters.Add("@BorrowerID", SqlDbType.VarChar).Value = txt_BID.Text;
                     cmd.Parameters.Add("@payment", SqlDbType.VarChar).Value = txt_Payment.Text;
                     cmd.Parameters.Add("@date", SqlDbType.VarChar).Value = DateTime.Now.ToString("dd MMMM, yyyy");

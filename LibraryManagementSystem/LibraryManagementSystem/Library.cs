@@ -99,6 +99,8 @@ namespace LibraryManagementSystem
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            System.Random rand = new System.Random((int)System.DateTime.Now.Ticks);
+            int random = rand.Next(1, 20);
 
             string type = "Main";
             if (radioButton2.Checked)
@@ -128,7 +130,7 @@ namespace LibraryManagementSystem
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
 
-                            cmd.Parameters.Add("@libraryId", SqlDbType.VarChar).Value = txt_LibraryID.Text;
+                            cmd.Parameters.Add("@libraryId", SqlDbType.VarChar).Value = random;
                             cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = txt_LibraryName.Text;
                             cmd.Parameters.Add("@type", SqlDbType.VarChar).Value = type;
                             cmd.Parameters.Add("@administrator", SqlDbType.VarChar).Value = txt_Admin.Text;

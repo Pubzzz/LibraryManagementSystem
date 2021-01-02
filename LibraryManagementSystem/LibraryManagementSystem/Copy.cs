@@ -98,8 +98,11 @@ namespace LibraryManagementSystem
             one.Show();
         }
 
+       
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            System.Random rand = new System.Random((int)System.DateTime.Now.Ticks);
+            int random = rand.Next(1, 100000000);
 
             string Avail = "Available";
             if (no.Checked)
@@ -115,35 +118,10 @@ namespace LibraryManagementSystem
                 DataTable DS = new DataTable();
                 DA.Fill(DS);
 
-                if(DS.Rows.Count == 0)
+                if (DS.Rows.Count == 0)
                 {
                     MessageBox.Show("This is not a registered book at the library");
-                   
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error occured : " + ex);
-            }
-            finally
-            {
-                con.Close();
-                LoadAllCustomer();
-            }
 
-            string query = "SELECT * FROM Copy where CopyID='" + txt_CopyID.Text + "' ";
-            SqlCommand comd = new SqlCommand(query, con);
-
-            try
-            {
-                con.Open();
-                SqlDataAdapter DoA = new SqlDataAdapter(comd);
-                DataTable DoS = new DataTable();
-                DoA.Fill(DoS);
-
-                if (DoS.Rows.Count == 1)
-                {
-                    MessageBox.Show("This CopyID is taken ");
                 }
                 else
                 {
@@ -151,14 +129,14 @@ namespace LibraryManagementSystem
                     {
                         using (SqlCommand cmmd = new SqlCommand("spInsertCopy", conn))
                         {
-                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmmd.CommandType = CommandType.StoredProcedure;
 
-                            cmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = txt_CopyID.Text;
-                            cmd.Parameters.Add("@Availability", SqlDbType.VarChar).Value = Avail;
-                            cmd.Parameters.Add("@pPrice", SqlDbType.VarChar).Value = txt_PurchasePrice.Text;
-                            cmd.Parameters.Add("@sPrice", SqlDbType.VarChar).Value = txt_SellingPrice.Text;
-                            cmd.Parameters.Add("@isbn", SqlDbType.VarChar).Value = txt_ISBN.Text;
-                            
+                            cmmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = random;
+                            cmmd.Parameters.Add("@Availability", SqlDbType.VarChar).Value = Avail;
+                            cmmd.Parameters.Add("@pPrice", SqlDbType.VarChar).Value = txt_PurchasePrice.Text;
+                            cmmd.Parameters.Add("@sPrice", SqlDbType.VarChar).Value = txt_SellingPrice.Text;
+                            cmmd.Parameters.Add("@isbn", SqlDbType.VarChar).Value = txt_ISBN.Text;
+
 
                             try
                             {
@@ -189,6 +167,7 @@ namespace LibraryManagementSystem
             finally
             {
                 con.Close();
+                LoadAllCustomer();
             }
         }
 

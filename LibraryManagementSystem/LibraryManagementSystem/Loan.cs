@@ -51,6 +51,9 @@ namespace LibraryManagementSystem
         }
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            System.Random rand = new System.Random((int)System.DateTime.Now.Ticks);
+            int random = rand.Next(1, 100000000);
+
             bool isBorrowerExist = true;
             bool isCopyExist = true;
 
@@ -69,7 +72,6 @@ namespace LibraryManagementSystem
 
                 if (DS.Rows.Count == 0)
                 {
-                    // MessageBox.Show("This borrower is not a registered user");
                     isBorrowerExist = false;
                 }
             }
@@ -96,7 +98,6 @@ namespace LibraryManagementSystem
 
                     if (DS.Rows.Count == 0)
                     {
-                        //MessageBox.Show("This CopyID does not exist");
                         isCopyExist = false;
                     }
                 }
@@ -135,7 +136,7 @@ namespace LibraryManagementSystem
                                 {
                                     cmd.CommandType = CommandType.StoredProcedure;
 
-                                    cmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value = txt_LoanID.Text;
+                                    cmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value =random;
                                     cmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = txt_CopyID.Text;
                                     cmd.Parameters.Add("@BID", SqlDbType.VarChar).Value = txt_BorrowerID.Text;
                                     cmd.Parameters.Add("@LDate", SqlDbType.VarChar).Value = txt_LendingDate.Text;

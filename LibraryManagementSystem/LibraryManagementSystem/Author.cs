@@ -100,6 +100,9 @@ namespace LibraryManagementSystem
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            System.Random rand = new System.Random((int)System.DateTime.Now.Ticks);
+            int random = rand.Next(1, 100);
+
             string query = "SELECT * FROM Author where AuthorID='" + txt_AuthorID.Text + "' ";
             SqlCommand comd = new SqlCommand(query, con);
 
@@ -122,7 +125,7 @@ namespace LibraryManagementSystem
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
 
-                            cmd.Parameters.Add("@authorId", SqlDbType.VarChar).Value = txt_AuthorID.Text;
+                            cmd.Parameters.Add("@authorId", SqlDbType.VarChar).Value = random;
                             cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = txt_AuthorName.Text;
                             cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = txt_ContactNo.Text;
                             cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = txt_Email.Text;
