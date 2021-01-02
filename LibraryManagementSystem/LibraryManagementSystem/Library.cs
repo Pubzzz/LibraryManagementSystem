@@ -299,7 +299,7 @@ namespace LibraryManagementSystem
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            string query = "Select * from Library where LibID ='" + txt_Search.Text + "'";
+            string query = "Select * from Library where Name ='" + txt_Search.Text + "'";
             SqlDataAdapter DA = new SqlDataAdapter(query, con);
 
             DataSet DS = new DataSet();
