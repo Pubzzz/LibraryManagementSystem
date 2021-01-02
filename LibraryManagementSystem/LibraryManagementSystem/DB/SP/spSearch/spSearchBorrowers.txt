@@ -1,0 +1,19 @@
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE spSearchBorrowers 
+@bid NCHAR
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM [dbo].[Borrower]
+	WHERE BID = @bid;
+END
+GO
