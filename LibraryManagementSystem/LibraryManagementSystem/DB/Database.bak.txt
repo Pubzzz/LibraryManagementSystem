@@ -109,3 +109,14 @@ CREATE TABLE [dbo].[BookBackup] (
     [Subject]      NCHAR (10) NULL, 
     CONSTRAINT [PK_BookBackup] PRIMARY KEY ([ISBN])
 );
+
+CREATE TABLE [dbo].[BorrowerBackup](
+    [BID]     NCHAR (10) NOT NULL,
+    [Name]    NCHAR (60) NOT NULL,
+    [Contact] NCHAR (10) NULL,
+    [Address] NCHAR (70) NULL,
+    [Email]   NCHAR (30) NULL, 
+    CONSTRAINT [PK_BorrowerBackup] PRIMARY KEY ([BID])
+);
+
+
