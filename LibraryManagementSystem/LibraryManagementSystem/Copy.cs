@@ -149,7 +149,7 @@ namespace LibraryManagementSystem
                 {
                     using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
                     {
-                        using (SqlCommand cmmd = new SqlCommand("spInsertCopies", conn))
+                        using (SqlCommand cmmd = new SqlCommand("spInsertCopy", conn))
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -158,12 +158,13 @@ namespace LibraryManagementSystem
                             cmd.Parameters.Add("@pPrice", SqlDbType.VarChar).Value = txt_PurchasePrice.Text;
                             cmd.Parameters.Add("@sPrice", SqlDbType.VarChar).Value = txt_SellingPrice.Text;
                             cmd.Parameters.Add("@isbn", SqlDbType.VarChar).Value = txt_ISBN.Text;
+                            
 
                             try
                             {
                                 conn.Open();
                                 cmmd.ExecuteNonQuery();
-                                MessageBox.Show("Record added Successfully");
+                                MessageBox.Show("Record added successfuly");
                             }
                             catch (Exception ex)
                             {

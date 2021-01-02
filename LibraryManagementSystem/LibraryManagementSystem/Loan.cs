@@ -21,7 +21,7 @@ namespace LibraryManagementSystem
         {
             InitializeComponent();
             LoadAllCustomer();
-            
+
         }
         private void LoadAllCustomer()
         {
@@ -51,6 +51,9 @@ namespace LibraryManagementSystem
         }
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            bool isBorrowerExist = true;
+            bool isCopyExist = true;
+
 
             txt_LendingDate.Text = DateTime.Now.ToString("dd MMMM, yyyy");
             txt_ReturnedDate.Text = DateTime.Now.AddDays(14).ToString("dd MMMM, yyyy");
@@ -64,10 +67,10 @@ namespace LibraryManagementSystem
                 DataTable DS = new DataTable();
                 DA.Fill(DS);
 
-                while (DS.Rows.Count == 0)
+                if (DS.Rows.Count == 0)
                 {
-                    MessageBox.Show("This borrower is not a registered user");
-                    break;
+                    // MessageBox.Show("This borrower is not a registered user");
+                    isBorrowerExist = false;
                 }
             }
             catch (Exception ex)
@@ -80,89 +83,103 @@ namespace LibraryManagementSystem
                 LoadAllCustomer();
             }
 
-            string qery = "SELECT * FROM Copy where CopyID='" + txt_CopyID.Text + "' ";
-            SqlCommand cmmmd = new SqlCommand(qery, con);
-            try
+            if (isBorrowerExist)
             {
-                con.Open();
-                SqlDataAdapter DA = new SqlDataAdapter(cmmmd);
-                DataTable DS = new DataTable();
-                DA.Fill(DS);
-
-                while (DS.Rows.Count == 0)
+                string qery = "SELECT * FROM Copy where CopyID='" + txt_CopyID.Text + "' ";
+                SqlCommand cmmmd = new SqlCommand(qery, con);
+                try
                 {
-                    MessageBox.Show("This CopyID does not exist");
-                    break;
+                    con.Open();
+                    SqlDataAdapter DA = new SqlDataAdapter(cmmmd);
+                    DataTable DS = new DataTable();
+                    DA.Fill(DS);
+
+                    if (DS.Rows.Count == 0)
+                    {
+                        //MessageBox.Show("This CopyID does not exist");
+                        isCopyExist = false;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error occured : " + ex);
-            }
-            finally
-            {
-                con.Close();
-                LoadAllCustomer();
-            }
-
-
-            string query = "SELECT * FROM Loan where LoanID='" + txt_LoanID.Text + "' ";
-            SqlCommand cmmd = new SqlCommand(query, con);
-
-            try
-            {
-                con.Open();
-                SqlDataAdapter DA = new SqlDataAdapter(cmmd);
-                DataTable DS = new DataTable();
-                DA.Fill(DS);
-
-                if (DS.Rows.Count == 1)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("This Loan ID is already used");
+                    MessageBox.Show("Error occured : " + ex);
+                }
+                finally
+                {
+                    con.Close();
+                    LoadAllCustomer();
+                }
+
+
+                if (isCopyExist)
+                {
+                    string query = "SELECT * FROM Loan where LoanID='" + txt_LoanID.Text + "' ";
+                    SqlCommand cmmd = new SqlCommand(query, con);
+
+                    try
+                    {
+                        con.Open();
+                        SqlDataAdapter DA = new SqlDataAdapter(cmmd);
+                        DataTable DS = new DataTable();
+                        DA.Fill(DS);
+
+                        if (DS.Rows.Count == 1)
+                        {
+                            MessageBox.Show("This Loan ID is already used");
+                        }
+                        else
+                        {
+                            using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                            {
+                                using (SqlCommand cmd = new SqlCommand("spInsertLoans", conn))
+                                {
+                                    cmd.CommandType = CommandType.StoredProcedure;
+
+                                    cmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value = txt_LoanID.Text;
+                                    cmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = txt_CopyID.Text;
+                                    cmd.Parameters.Add("@BID", SqlDbType.VarChar).Value = txt_BorrowerID.Text;
+                                    cmd.Parameters.Add("@LDate", SqlDbType.VarChar).Value = txt_LendingDate.Text;
+                                    cmd.Parameters.Add("@RDate", SqlDbType.VarChar).Value = txt_ReturnedDate.Text;
+
+                                    try
+                                    {
+                                        conn.Open();
+                                        cmd.ExecuteNonQuery();
+                                        MessageBox.Show("Record added Successfully");
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("Error occured : " + ex);
+                                    }
+                                    finally
+                                    {
+                                        conn.Close();
+                                        con.Close();
+                                        LoanGridView.DataSource = null;
+                                        LoadAllCustomer();
+                                    }
+                                }
+                            }
+                            con.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occured : " + ex);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
-                    {
-                        using (SqlCommand cmd = new SqlCommand("spInsertLoans", conn))
-                        {
-                            cmd.CommandType = CommandType.StoredProcedure;
-
-                            cmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value = txt_LoanID.Text;
-                            cmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = txt_CopyID.Text;
-                            cmd.Parameters.Add("@BID", SqlDbType.VarChar).Value = txt_BorrowerID.Text;
-                            cmd.Parameters.Add("@LDate", SqlDbType.VarChar).Value = txt_LendingDate.Text;
-                            cmd.Parameters.Add("@RDate", SqlDbType.VarChar).Value = txt_ReturnedDate.Text;
-
-                            try
-                            {
-                                conn.Open();
-                                cmd.ExecuteNonQuery();
-                                MessageBox.Show("Record added Successfully");
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Error occured : " + ex);
-                            }
-                            finally
-                            {
-                                conn.Close();
-                                con.Close();
-                                LoanGridView.DataSource = null;
-                                LoadAllCustomer();
-                            }
-                        }
-                    }
-                    con.Close();
+                    MessageBox.Show("This CopyID does not exist");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error occured : " + ex);
-            }
-            finally
-            {
-                con.Close();
+                MessageBox.Show("This borrower is not a registered user");
             }
         }
 
@@ -272,7 +289,7 @@ namespace LibraryManagementSystem
                 LoanGridView.DataSource = null;
                 LoadAllCustomer();
             }
-            
+
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -419,32 +436,10 @@ namespace LibraryManagementSystem
             Fine one = new Fine();
             one.Show();
         }
-        
+
         private void CheckOverdue()
         {
-            using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
-            {
-                using (SqlCommand cmd = new SqlCommand("FuncCheckOverDue", conn))
-                {
-                    try
-                    {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occured : " + ex);
-                    }
-                    finally
-                    {
-                        conn.Close();
-                        con.Close();
-                    }
-                }
-            }
-            con.Close();
-            /*
-            string Today= DateTime.Now.ToString("dd MMMM, yyyy");
+            string Today = DateTime.Now.ToString("dd MMMM, yyyy");
             string qry = "SELECT * FROM Loan where RDate GREATER THAN (SELECT DATEADD(day, 14, LDate) AS DateAdd;) ";
             SqlCommand comd = new SqlCommand(qry, con);
             try
@@ -459,41 +454,42 @@ namespace LibraryManagementSystem
                     MessageBox.Show("No Records Found");
                 }
                 else
-                { 
-                    string LID="";
-                    string BID="";
-                    string NoOfDays = ""; ;
+                {
+                    string LID = "";
+                    string BID = "";
                     string PaymentDue = "";
-                    string Rdate;
-                    
+                    string Rdate = "";
+                    int NoOfDays = 0 ;
+
                     DataTable Dt = new DataTable();
                     LoanGridView.DataSource = bindingSource1;
                     foreach (DataGridViewRow row in LoanGridView.Rows)
                     {
                         if (row.Cells[0].Value != null)
                         {
-                            
-                                DataRow dr = Dt.NewRow();
 
-                                LID = row.Cells[0].Value.ToString();
-                                BID = row.Cells[2].Value.ToString();
-                                Rdate = row.Cells[4].Value.ToString();
-                                break;
-                            
+                            DataRow dr = Dt.NewRow();
+
+                            LID = row.Cells[0].Value.ToString();
+                            BID = row.Cells[2].Value.ToString();
+                            Rdate = row.Cells[4].Value.ToString();
+                            break;
+
                         }
                     }
-                    /*
-                    NoOfDays = (DateTime.Now - DateTime.Rdate).TotalDays.ToString();
-                    PaymentDue = (15.00 * NoOfDays).ToString;
-                    
-            string qury = "INSERT INTO Overdue VALUES ('" + LID + "','" + BID + "','" +NoOfDays+ "','" +PaymentDue+ "')";
+
+
+                    NoOfDays = (DateTime.Now.Date - DateTime.Parse(Rdate.ToString()).Date).Days;
+                    PaymentDue = (15 * NoOfDays).ToString();
+
+                    string qury = "INSERT INTO Overdue VALUES ('" + LID + "','" + BID + "','" + NoOfDays + "','" + PaymentDue + "')";
                     SqlCommand cmd = new SqlCommand(qury, con);
 
                     try
                     {
                         con.Open();
                         cmd.ExecuteNonQuery();
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -502,7 +498,7 @@ namespace LibraryManagementSystem
                     finally
                     {
                         con.Close();
-                       
+
                     }
                 }
             }
@@ -515,9 +511,9 @@ namespace LibraryManagementSystem
                 con.Close();
                 LoadAllCustomer();
             }
-        
 
-    }*/
+
 
         }
     }
+}
