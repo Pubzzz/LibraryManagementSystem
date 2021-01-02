@@ -1,0 +1,21 @@
+CREATE FUNCTION [dbo].[FuncCheckOverDue]
+(
+@loanId NCHAR
+)
+RETURNS BIT
+AS
+BEGIN
+
+	DECLARE @isOverDue BIT;
+	DECLARE @loan NCHAR
+
+	SET @loan = (SELECT LoanID from dbo.Loan WHERE LoanID = @loanId AND CONVERT(DATE, RDate)  < CONVERT (DATE,GETDATE()));
+
+	IF(@loan > 0 OR @loan IS NOT NULL)
+	SET @isOverDue = 1
+	ELSE
+	SET @isOverDue = 0
+
+	RETURN @isOverDue
+
+END
