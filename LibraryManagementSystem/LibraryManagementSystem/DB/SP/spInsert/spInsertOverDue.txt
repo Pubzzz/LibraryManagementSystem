@@ -1,0 +1,22 @@
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:	<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spInsertOverDue]
+@loanId INT,
+@borrowerId NCHAR,
+@days INT,
+@paymentDue INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO dbo.OverDue([LoanID],[BorrowerID],[NoOfDays],[PaymentDue])
+	VALUES(@loanId,@borrowerId,@days,@paymentDue);
+END
