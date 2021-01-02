@@ -16,4 +16,4 @@ BEGIN
 	SELECT * FROM [dbo].[Library]
 	WHERE LibID = @libId
 END
-GO
+

@@ -1,0 +1,8 @@
+﻿CREATE PROCEDURE spSearchBooks 
+@isbn INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM dbo.Book
+	WHERE ISBN = @isbn
+END

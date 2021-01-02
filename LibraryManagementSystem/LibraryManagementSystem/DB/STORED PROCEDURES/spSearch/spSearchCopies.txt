@@ -16,4 +16,4 @@ BEGIN
 	SELECT * FROM [dbo].[Copy]
 	WHERE CopyID = @copyId;
 END
-GO
+

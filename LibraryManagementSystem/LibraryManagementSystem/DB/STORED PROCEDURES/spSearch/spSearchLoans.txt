@@ -16,4 +16,4 @@ BEGIN
 	SELECT * FROM [dbo].[Loan]
 	WHERE LoanID = @loanId;
 END
-GO
+

@@ -16,4 +16,4 @@ BEGIN
 	SELECT * FROM [dbo].[Author]
 	WHERE AuthorID = @authorId;
 END
-GO
+

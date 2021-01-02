@@ -16,4 +16,4 @@ BEGIN
 	SELECT * FROM dbo.Book
 	WHERE ISBN = @isbn
 END
-GO
+

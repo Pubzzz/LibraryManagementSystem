@@ -16,4 +16,3 @@ BEGIN
 	SELECT * FROM [dbo].[Borrower]
 	WHERE BID = @bid;
 END
-GO
