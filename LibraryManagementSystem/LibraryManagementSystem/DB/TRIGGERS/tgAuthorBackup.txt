@@ -1,0 +1,15 @@
+
+
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[tgAuthorBackup]
+ON [dbo].[Author]
+AFTER DELETE
+AS 
+
+    INSERT INTO [dbo].[AuthorBackup]
+    SELECT *
+    FROM DELETED
