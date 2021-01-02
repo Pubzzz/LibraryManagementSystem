@@ -1,0 +1,31 @@
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date, ,>
+-- Description:	<Description, ,>
+-- =============================================
+CREATE FUNCTION [dbo].[FunCalculateOverDue]
+(
+@rDate DATE,
+@paymentDue INT
+)
+RETURNS INT
+AS
+BEGIN
+
+	DECLARE 
+	@overDueAmout INT,
+	@days INT
+	SET @days = DATEDIFF(DAY,CONVERT(DATE,@Rdate),CONVERT(DATE,GETDATE()));
+
+	Select @overDueAmout = @days * @paymentDue;
+
+	RETURN @overDueAmout;
+
+END
+
+
