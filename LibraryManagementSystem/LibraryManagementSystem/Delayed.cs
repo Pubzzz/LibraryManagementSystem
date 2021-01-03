@@ -47,8 +47,8 @@ namespace LibraryManagementSystem
             }
             con.Close();
             */
-            string Today = DateTime.Now.ToString("dd MMMM, yyyy");
-            string qry = "SELECT * from dbo.Loan WHERE CONVERT(DATE, LDate)  < CONVERT (DATE,GETDATE()) ";
+
+            string qry = "SELECT * from dbo.Loan WHERE CONVERT(DATE, RDate)  < CONVERT (DATE,GETDATE()) ";
             SqlCommand comd = new SqlCommand(qry, con);
             try
             {
@@ -87,7 +87,7 @@ namespace LibraryManagementSystem
                     }
 
 
-                    NoOfDays = (DateTime.Now.Date - DateTime.Parse(Rdate.ToString()).Date).Days;
+                    NoOfDays = (DateTime.Now.Date - DateTime.ParseExact(Rdate, "dd MMMM, yyyy",null)).Days;
                     PaymentDue = (15 * NoOfDays).ToString();
 
                     string qury = "INSERT INTO Overdue VALUES ('" + LID + "','" + BID + "','" + NoOfDays + "','" + PaymentDue + "')";
