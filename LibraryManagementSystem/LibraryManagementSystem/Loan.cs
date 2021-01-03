@@ -21,6 +21,7 @@ namespace LibraryManagementSystem
         {
             InitializeComponent();
             LoadAllCustomer();
+            CheckOverdue();
 
         }
         private void LoadAllCustomer()
@@ -136,7 +137,7 @@ namespace LibraryManagementSystem
                                 {
                                     cmd.CommandType = CommandType.StoredProcedure;
 
-                                    cmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value =random;
+                                    cmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value = random;
                                     cmd.Parameters.Add("@copyId", SqlDbType.VarChar).Value = txt_CopyID.Text;
                                     cmd.Parameters.Add("@BID", SqlDbType.VarChar).Value = txt_BorrowerID.Text;
                                     cmd.Parameters.Add("@LDate", SqlDbType.VarChar).Value = txt_LendingDate.Text;
@@ -437,7 +438,79 @@ namespace LibraryManagementSystem
             Fine one = new Fine();
             one.Show();
         }
+        private void CheckOverdue()
+        {
+            string qry = "SELECT * from dbo.Loan WHERE  RDate > (CAST(GETDATE() AS DATE))";
+            SqlCommand comd = new SqlCommand(qry, con);
+            try
+            {
+                con.Open();
+                SqlDataAdapter DA = new SqlDataAdapter(comd);
+                DataTable DS = new DataTable();
+                DA.Fill(DS);
 
-        
+                if (DS.Rows.Count == 0)
+                {
+                    MessageBox.Show("No Records Found");
+                }
+                else
+                {
+                    string LID = "";
+                    string BID = "";
+                    string PaymentDue = "";
+                    string Rdate = "";
+                    int NoOfDays = 0;
+
+                    DataTable Dt = new DataTable();
+                    LoanGridView.DataSource = bindingSource1;
+                    foreach (DataGridViewRow row in LoanGridView.Rows)
+                    {
+                        if (row.Cells[0].Value != null)
+                        {
+
+                            DataRow dr = Dt.NewRow();
+
+                            LID = row.Cells[0].Value.ToString();
+                            BID = row.Cells[2].Value.ToString();
+                            Rdate = row.Cells[4].Value.ToString();
+                            break;
+
+                        }
+                    }
+
+                    con.Close();
+                    NoOfDays = (DateTime.Now.Date - DateTime.ParseExact(Rdate, "dd MMMM, yyyy", null)).Days;
+                    PaymentDue = (15 * NoOfDays).ToString();
+
+                    string qury = "INSERT INTO Overdue VALUES ('" + LID + "','" + BID + "','" + NoOfDays + "','" + PaymentDue + "')";
+                    SqlCommand cmd = new SqlCommand(qury, con);
+
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occured : " + ex);
+                    }
+                    finally
+                    {
+                        con.Close();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured : " + ex);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+        }
     }
 }
