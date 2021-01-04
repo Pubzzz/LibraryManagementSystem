@@ -21,96 +21,25 @@ namespace LibraryManagementSystem
         {
             InitializeComponent();
             LoadAllCustomer();
-            //CheckOverdue();
+            CheckOverdue();
         }
-        /*private void CheckOverdue()
-        { 
+
+        private void CheckOverdue()
+        {
             List<string> LoanIdlist = new List<string>();
-            con.Open();
+
             string qry = "SELECT LoanID from Loan";
             SqlCommand cmd = new SqlCommand(qry, con);
-
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    LoanIdlist.Add(reader.GetInt32(0).ToString());
-                }
-            }
-
-            foreach(string loanId in LoanIdlist)
-            {
-                using (SqlCommand cmmd = new SqlCommand("spNotReturnedBookLoanID", con))
-                {
-                    cmmd.CommandType = CommandType.StoredProcedure;
-
-                    cmmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value = loanId;
-
-                    try
-                    { 
-                        cmmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occured : " + ex);
-                    }
-                }
-            }
-            con.Close();
-            */
-
-
-        /*
-    string qry = "SELECT * from dbo.Loan WHERE  RDate > DATEADD(DAY, 3,CAST(GETDATE() AS DATE))";
-    SqlCommand comd = new SqlCommand(qry, con);
-    try
-    {
-        con.Open();
-        SqlDataAdapter DA = new SqlDataAdapter(comd);
-        DataTable DS = new DataTable();
-        DA.Fill(DS);
-
-        if (DS.Rows.Count == 0)
-        {
-            MessageBox.Show("No Records Found");
-        }
-        else
-        {
-            string LID = "";
-            string BID = "";
-            string PaymentDue = "";
-            string Rdate = "";
-            int NoOfDays = 0;
-
-            DataTable Dt = new DataTable();
-            OverdueGridView.DataSource = bindingSource1;
-            foreach (DataGridViewRow row in OverdueGridView.Rows)
-            {
-                if (row.Cells[0].Value != null)
-                {
-
-                    DataRow dr = Dt.NewRow();
-
-                    LID = row.Cells[0].Value.ToString();
-                    BID = row.Cells[2].Value.ToString();
-                    Rdate = row.Cells[4].Value.ToString();
-                    break;
-
-                }
-            }
-
-            con.Close();
-            //NoOfDays = (DateTime.Now.Date - DateTime.ParseExact(Rdate, "dd MMMM, yyyy", null)).Days;
-            PaymentDue = (15 * NoOfDays).ToString();
-
-            string qury = "INSERT INTO Overdue VALUES ('" + LID + "','" + BID + "','" + NoOfDays + "','" + PaymentDue + "')";
-            SqlCommand cmd = new SqlCommand(qury, con);
-
             try
             {
                 con.Open();
-                cmd.ExecuteNonQuery();
+                SqlDataReader reader = cmd.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    LoanIdlist.Add(reader.GetInt32(0).ToString());
+
+                }
             }
             catch (Exception ex)
             {
@@ -119,36 +48,39 @@ namespace LibraryManagementSystem
             finally
             {
                 con.Close();
+            }
 
+            foreach (string loanId in LoanIdlist)
+            {
+                using (SqlCommand cmmd = new SqlCommand("spNotReturnedBookLoanID", con))
+                {
+                    cmmd.CommandType = CommandType.StoredProcedure;
+
+                    cmmd.Parameters.Add("@loanId", SqlDbType.VarChar).Value = loanId;
+
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+
+                        DataSet DS = new DataSet();
+                        DA.Fill(DS, "Delayed");
+                        bindingSource1.DataSource = DS.Tables["Delayed"];
+                        OverdueGridView.DataSource = bindingSource1;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occured : " + ex);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+
+                }
             }
         }
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Error occured : " + ex);
-    }
-    finally
-    {
-        con.Close();
-        LoadAllCustomer();
-    }
-}
-
-
-/*catch (Exception ex)
-{
-    MessageBox.Show("Error occured : " + ex);
-}
-finally
-{
-    con.Close();
-    LoadAllCustomer();
-}
-}
-}
-}*/
-
-        private void LoadAllCustomer()
+            private void LoadAllCustomer()
         {
             try
             {
