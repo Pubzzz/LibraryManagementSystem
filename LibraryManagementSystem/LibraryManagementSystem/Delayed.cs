@@ -25,7 +25,7 @@ namespace LibraryManagementSystem
         }
 
         private void CheckOverdue()
-        {
+        {/*
             List<string> LoanIdlist = new List<string>();
 
             string qry = "SELECT LoanID from Loan";
@@ -78,7 +78,7 @@ namespace LibraryManagementSystem
                     }
 
                 }
-            }
+            }*/
         }
             private void LoadAllCustomer()
         {

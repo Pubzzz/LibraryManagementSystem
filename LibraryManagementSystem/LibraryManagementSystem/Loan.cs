@@ -440,7 +440,7 @@ namespace LibraryManagementSystem
         }
         private void CheckOverdue()
         {
-            string qry = "SELECT * from dbo.Loan WHERE  RDate > (CAST(GETDATE() AS DATE))";
+            string qry = "SELECT * from Loan WHERE RDate > (CAST(GETDATE() AS DATE))";
             SqlCommand comd = new SqlCommand(qry, con);
             try
             {
