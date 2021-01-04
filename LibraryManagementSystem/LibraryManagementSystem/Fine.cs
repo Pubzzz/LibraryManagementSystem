@@ -60,7 +60,7 @@ namespace LibraryManagementSystem
 
             using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
             {
-                using (SqlCommand cmd = new SqlCommand("spInsertPayment", conn))
+                using (SqlCommand cmd = new SqlCommand("spInsertPayments", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 

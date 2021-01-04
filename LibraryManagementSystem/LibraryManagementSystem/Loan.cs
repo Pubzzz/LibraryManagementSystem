@@ -22,7 +22,6 @@ namespace LibraryManagementSystem
             InitializeComponent();
             LoadAllCustomer();
             CheckOverdue();
-
         }
         private void LoadAllCustomer()
         {
@@ -439,30 +438,30 @@ namespace LibraryManagementSystem
             one.Show();
         }
         private void CheckOverdue()
-        {
-            string qry = "SELECT * from Loan WHERE RDate > (CAST(GETDATE() AS DATE))";
-            SqlCommand comd = new SqlCommand(qry, con);
-            try
-            {
-                con.Open();
-                SqlDataAdapter DA = new SqlDataAdapter(comd);
-                DataTable DS = new DataTable();
-                DA.Fill(DS);
-
-                if (DS.Rows.Count == 0)
+        { 
+                string qry = "SELECT * from Loan WHERE RDate < (CAST(GETDATE() AS DATE))";
+                SqlCommand comd = new SqlCommand(qry, con);
+                try
                 {
-                    MessageBox.Show("No Records Found");
-                }
-                else
-                {
-                    string LID = "";
-                    string BID = "";
-                    string PaymentDue = "";
-                    string Rdate = "";
-                    int NoOfDays = 0;
+                    con.Open();
+                    SqlDataAdapter DA = new SqlDataAdapter(comd);
+                    DataTable DS = new DataTable();
+                    DA.Fill(DS);
 
-                    DataTable Dt = new DataTable();
-                    LoanGridView.DataSource = bindingSource1;
+                    if (DS.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No Records Found");
+                    }
+                    else
+                    {
+                        string LID = "";
+                        string BID = "";
+                        string PaymentDue = "";
+                        DateTime Rdate = new DateTime();
+                        int NoOfDays = 0;
+
+                        DataTable Dt = new DataTable();
+                        LoanGridView.DataSource = bindingSource1;
                     foreach (DataGridViewRow row in LoanGridView.Rows)
                     {
                         if (row.Cells[0].Value != null)
@@ -472,45 +471,56 @@ namespace LibraryManagementSystem
 
                             LID = row.Cells[0].Value.ToString();
                             BID = row.Cells[2].Value.ToString();
-                            Rdate = row.Cells[4].Value.ToString();
-                            break;
-
+                            Rdate = DateTime.Parse(row.Cells[4].Value.ToString());
                         }
-                    }
 
-                    con.Close();
-                    NoOfDays = (DateTime.Now.Date - DateTime.ParseExact(Rdate, "dd MMMM, yyyy", null)).Days;
-                    PaymentDue = (15 * NoOfDays).ToString();
 
-                    string qury = "INSERT INTO Overdue VALUES ('" + LID + "','" + BID + "','" + NoOfDays + "','" + PaymentDue + "')";
-                    SqlCommand cmd = new SqlCommand(qury, con);
-
-                    try
-                    {
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occured : " + ex);
-                    }
-                    finally
-                    {
                         con.Close();
+                        NoOfDays = (DateTime.Now.Date - Rdate.Date).Days;
+                        PaymentDue = (15 * NoOfDays).ToString();
 
+                        using (SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; Initial Catalog = LibDB; Integrated Security = True"))
+                        {
+                            using (SqlCommand cmd = new SqlCommand("spInsertOverdue", conn))
+                            {
+                                cmd.CommandType = CommandType.StoredProcedure;
+
+                                cmd.Parameters.Add("@LoanId", SqlDbType.VarChar).Value = LID;
+                                cmd.Parameters.Add("@BorrowerId", SqlDbType.VarChar).Value = BID;
+                                cmd.Parameters.Add("@Days", SqlDbType.VarChar).Value = NoOfDays;
+                                cmd.Parameters.Add("@Pay", SqlDbType.VarChar).Value =PaymentDue;
+
+                                try
+                                {
+                                    conn.Open();
+                                    cmd.ExecuteNonQuery();
+                                    
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Error occured : " + ex);
+                                }
+                                finally
+                                {
+                                    conn.Close();
+                                    con.Close();
+                                    
+                                }
+                            }
+                        }
+                        con.Close();
+                    }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error occured : " + ex);
-            }
-            finally
-            {
-                con.Close();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured : " + ex);
+                }
+                finally
+                {
+                    con.Close();
 
-            }
+                }
         }
     }
 }

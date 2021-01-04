@@ -21,7 +21,7 @@ namespace LibraryManagementSystem
         {
             InitializeComponent();
             LoadAllCustomer();
-            CheckOverdue();
+            //CheckOverdue();
         }
 
         private void CheckOverdue()
