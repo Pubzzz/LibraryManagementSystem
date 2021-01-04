@@ -1,0 +1,126 @@
+CREATE DATABASE LibDB;
+
+CREATE TABLE [dbo].[Author] (
+    [AuthorID] NCHAR (10) NOT NULL,
+    [Name]     NCHAR (60) NULL,
+    [Contact]  NCHAR (10) NULL,
+    [Email]    NCHAR (30) NULL, 
+    CONSTRAINT [PK_Author] PRIMARY KEY ([AuthorID])
+);
+
+CREATE TABLE [dbo].[Book] (
+    [ISBN]         BIGINT     NOT NULL,
+    [Title]        NCHAR (30) NOT NULL,
+    [Author]       NCHAR (60) NOT NULL,
+    [No.of.copies] NCHAR (10) NULL,
+    [Subject]      NCHAR (10) NULL, 
+    CONSTRAINT [PK_Book] PRIMARY KEY ([ISBN])
+);
+
+CREATE TABLE [dbo].[Borrower] (
+    [BID]     NCHAR (10) NOT NULL,
+    [Name]    NCHAR (60) NOT NULL,
+    [Contact] NCHAR (10) NULL,
+    [Address] NCHAR (70) NULL,
+    [Email]   NCHAR (30) NULL, 
+    CONSTRAINT [PK_Borrower] PRIMARY KEY ([BID])
+);
+
+CREATE TABLE [dbo].[Copy] (
+    [CopyID]       NCHAR (10) NOT NULL,
+    [Availability] NCHAR (10) NULL,
+    [Pprice]       NCHAR (10) NULL,
+    [Sprice]       NCHAR (10) NULL,
+    [ISBN]         NCHAR (10) NOT NULL, 
+    CONSTRAINT [PK_Copy] PRIMARY KEY ([CopyID])
+);
+
+CREATE TABLE [dbo].[Library] (
+    [LibID]         NCHAR (10) NOT NULL,
+    [Name]          NCHAR (60) NOT NULL,
+    [Type]          NCHAR (10) NOT NULL,
+    [Administrator] NCHAR (60) NOT NULL,
+    [Contact]       NCHAR (10) NOT NULL,
+    [Address]       NCHAR (70) NOT NULL, 
+    CONSTRAINT [PK_Library] PRIMARY KEY ([LibID])
+);
+
+CREATE TABLE [dbo].[Loan] (
+    [LoanID] NCHAR (10) NOT NULL,
+    [CopyID] NCHAR (10) NOT NULL,
+    [BID]    NCHAR (10) NOT NULL,
+    [LDate]  DATE       NULL,
+    [RDate]  DATE       NULL, 
+    CONSTRAINT [PK_Loan] PRIMARY KEY ([LoanID])
+);
+
+CREATE TABLE [dbo].[Users] (
+    [Username] NCHAR (10) NOT NULL,
+    [Password] NCHAR (10) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Username] ASC)
+);
+
+CREATE TABLE [dbo].[Overdue] (
+    [LoanID]     INT           NOT NULL,
+    [BorrowerID] NVARCHAR (50) NULL,
+    [NoOfDays]   INT           NULL,
+    [PaymentDue] INT           NULL,
+    PRIMARY KEY CLUSTERED ([LoanID] ASC)
+);
+
+CREATE TABLE [dbo].[Payment] (
+    [LoanID]     INT  NOT NULL,
+    [BorrowerID] INT  NOT NULL,
+    [Payment]    INT  NOT NULL,
+    [Date]       DATE NOT NULL,
+    PRIMARY KEY CLUSTERED ([LoanID] ASC)
+);
+
+
+CREATE TABLE [dbo].[Loan] (
+    [LoanID] NCHAR (10) NOT NULL,
+    [CopyID] INT NOT NULL,
+    [BID]    NCHAR (10) NOT NULL,
+    [LDate]  DATE       NULL,
+    [RDate]  DATE       NULL, 
+    CONSTRAINT [PK_Loan] PRIMARY KEY ([LoanID]),
+    CONSTRAINT [FK_Loan] FOREIGN KEY([CopyID])
+    REFERENCES [dbo].[Copy] ([CopyID])
+);
+
+CREATE TABLE [dbo].[Book] (
+    [ISBN]         BIGINT     NOT NULL,
+    [Title]        NCHAR (30) NOT NULL,
+    [AuthorID]       INT NOT NULL,
+    [No.of.copies] NCHAR (10) NULL,
+    [Subject]      NCHAR (10) NULL, 
+    CONSTRAINT [PK_Book] PRIMARY KEY ([ISBN]),
+    CONSTRAINT [FK_Book] FOREIGN KEY([AuthorID])
+    REFERENCES [dbo].[Author] ([AuthorID])
+);
+
+CREATE TABLE [dbo].[BookBackup] (
+    [ISBN]         BIGINT     NOT NULL,
+    [Title]        NCHAR (30) NOT NULL,
+    [Author]       NCHAR (60) NOT NULL,
+    [No.of.copies] NCHAR (10) NULL,
+    [Subject]      NCHAR (10) NULL, 
+    CONSTRAINT [PK_BookBackup] PRIMARY KEY ([ISBN])
+);
+
+CREATE TABLE [dbo].[BorrowerBackup](
+    [BID]     NCHAR (10) NOT NULL,
+    [Name]    NCHAR (60) NOT NULL,
+    [Contact] NCHAR (10) NULL,
+    [Address] NCHAR (70) NULL,
+    [Email]   NCHAR (30) NULL, 
+    CONSTRAINT [PK_BorrowerBackup] PRIMARY KEY ([BID])
+);
+
+CREATE TABLE [dbo].[AuthorBackup](
+	[AuthorID] [nchar](10) NOT NULL,
+	[Name] [nchar](60) NULL,
+	[Contact] [nchar](10) NULL,
+	[Email] [nchar](30) NULL,
+ CONSTRAINT [PK_AuthorBackup] PRIMARY KEY  ([AuthorID])
+);
