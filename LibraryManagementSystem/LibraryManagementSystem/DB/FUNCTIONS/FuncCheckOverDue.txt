@@ -1,6 +1,6 @@
 CREATE FUNCTION [dbo].[FuncCheckOverDue]
 (
-@loanId NCHAR
+@loanId INT
 )
 RETURNS BIT
 AS
