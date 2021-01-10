@@ -22,10 +22,8 @@ namespace LibraryManagementSystem
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            Home one = new Home();
-            this.Hide();
-            one.Show();
-            /*string qry = "SELECT * FROM Users where Username='" + TxtUname.Text + "' AND Password='" + txtPass.Text + "'";
+            
+           string qry = "SELECT * FROM Users where Username='" + TxtUname.Text + "' AND Password='" + txtPass.Text + "'";
             SqlCommand cmd = new SqlCommand(qry, con);
 
             try
@@ -54,7 +52,7 @@ namespace LibraryManagementSystem
             finally
             {
                 con.Close();
-            }*/
+            }
         }
 
         private void btn_Login_KeyDown(object sender, KeyEventArgs e)
